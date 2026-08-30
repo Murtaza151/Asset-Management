@@ -9,10 +9,104 @@
  "icon": "truck",
  "idx": 0,
  "is_hidden": 0,
- "label": "Key Arabia Assets",
- "links": [],
+ "label": "Assets",
+ "links": [
+  {
+   "doctype": "Workspace Link",
+   "label": "Assets",
+   "type": "Card Break"
+  },
+  {
+   "doctype": "Workspace Link",
+   "link_to": "Asset",
+   "label": "Asset",
+   "type": "Link"
+  },
+  {
+   "doctype": "Workspace Link",
+   "link_to": "Location",
+   "label": "Location",
+   "type": "Link"
+  },
+  {
+   "doctype": "Workspace Link",
+   "link_to": "Asset Category",
+   "label": "Asset Category",
+   "type": "Link"
+  },
+  {
+   "doctype": "Workspace Link",
+   "link_to": "Asset Movement",
+   "label": "Asset Movement",
+   "type": "Link"
+  },
+  {
+   "doctype": "Workspace Link",
+   "label": "Maintenance",
+   "type": "Card Break"
+  },
+  {
+   "doctype": "Workspace Link",
+   "link_to": "Asset Maintenance Team",
+   "label": "Asset Maintenance Team",
+   "type": "Link"
+  },
+  {
+   "doctype": "Workspace Link",
+   "link_to": "Asset Maintenance",
+   "label": "Asset Maintenance",
+   "type": "Link"
+  },
+  {
+   "doctype": "Workspace Link",
+   "link_to": "Asset Maintenance Log",
+   "label": "Asset Maintenance Log",
+   "type": "Link"
+  },
+  {
+   "doctype": "Workspace Link",
+   "link_to": "Asset Value Adjustment",
+   "label": "Asset Value Adjustment",
+   "type": "Link"
+  },
+  {
+   "doctype": "Workspace Link",
+   "link_to": "Asset Repair",
+   "label": "Asset Repair",
+   "type": "Link"
+  },
+  {
+   "doctype": "Workspace Link",
+   "link_to": "Asset Capitalization",
+   "label": "Asset Capitalization",
+   "type": "Link"
+  },
+  {
+   "doctype": "Workspace Link",
+   "label": "Reports",
+   "type": "Card Break"
+  },
+  {
+   "doctype": "Workspace Link",
+   "link_to": "Asset Depreciation Ledger",
+   "label": "Asset Depreciation Ledger",
+   "type": "Link"
+  },
+  {
+   "doctype": "Workspace Link",
+   "link_to": "Asset Depreciations and Balances",
+   "label": "Asset Depreciations and Balances",
+   "type": "Link"
+  },
+  {
+   "doctype": "Workspace Link",
+   "link_to": "Asset Activity",
+   "label": "Asset Activity",
+   "type": "Link"
+  }
+ ],
  "module": "Key Arabia Assets",
- "name": "Key Arabia Assets",
+ "name": "Assets",
  "number_cards": [],
  "parent_page": "",
  "public": 1,
@@ -64,6 +158,6 @@
    "label": "Key Arabia Salik Transaction"
   }
  ],
- "title": "Key Arabia Assets",
+ "title": "Assets",
  "type": "Workspace"
 }

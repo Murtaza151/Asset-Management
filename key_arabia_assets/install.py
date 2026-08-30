@@ -166,36 +166,12 @@ def before_install():
 def after_install():
     create_roles()
     seed_maintenance_catalogue()
-    add_dashboard_shortcut_to_assets_workspace()
 
 
 def after_migrate():
     create_roles()
     create_custom_fields(ASSET_CUSTOM_FIELDS, update=True)
     seed_maintenance_catalogue()
-    add_dashboard_shortcut_to_assets_workspace()
-
-
-def add_dashboard_shortcut_to_assets_workspace():
-    if frappe.db.exists("Workspace", "Assets"):
-        try:
-            workspace = frappe.get_doc("Workspace", "Assets")
-            exists = False
-            for shortcut in getattr(workspace, "shortcuts", []):
-                if shortcut.link_to == "key-arabia-assets-dashboard" and shortcut.type == "Page":
-                    exists = True
-                    break
-            if not exists:
-                workspace.append("shortcuts", {
-                    "type": "Page",
-                    "link_to": "key-arabia-assets-dashboard",
-                    "label": "Key Arabia Asset Dashboard",
-                    "icon": "fa fa-truck"
-                })
-                workspace.save(ignore_permissions=True)
-                frappe.db.commit()
-        except Exception as e:
-            frappe.log_error(f"Failed to add dashboard shortcut to Assets Workspace: {str(e)}")
 
 
 def create_roles():
