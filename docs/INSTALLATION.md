@@ -14,7 +14,7 @@ Always take a verified database and files backup before installing an app on an 
 Run from the Frappe Bench directory:
 
 ```bash
-bench get-app https://github.com/Murtaza151/Key-Arabia-Asset-Management.git --branch v2.0.0
+bench get-app https://github.com/Murtaza151/Asset-Management.git
 bench --site <site-name> install-app key_arabia_assets
 bench --site <site-name> migrate
 bench build --app key_arabia_assets
