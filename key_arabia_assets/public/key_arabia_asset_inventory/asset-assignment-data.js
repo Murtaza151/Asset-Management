@@ -1,8 +1,8 @@
 /*
- * DexaFleet company bike assignment adapter.
+ * Key Arabia company bike assignment adapter.
  * Replace this local adapter with existing Lovable/Supabase custody and movement queries during integration.
  */
-window.DexaFleetCompanyAssignmentData = {
+window.Key ArabiaCompanyAssignmentData = {
   "version": "2026-07-13.1",
   "source": "Company supplied June and July 2026 bike custody list",
   "importedAt": "2026-07-13",

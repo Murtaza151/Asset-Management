@@ -1,5 +1,5 @@
 /*
- * DexaFleet company asset data adapter.
+ * Key Arabia company asset data adapter.
  * Replace this local adapter with the existing Lovable/Supabase asset query during integration.
  */
 (() => {
@@ -119,7 +119,7 @@
   });
 
   const positionByBike = new Map(
-    (window.DexaFleetCompanyAssignmentData?.currentPositions || []).map(position => [String(position.bikeNumber), position])
+    (window.Key ArabiaCompanyAssignmentData?.currentPositions || []).map(position => [String(position.bikeNumber), position])
   );
 
   const assignmentState = position => {
@@ -199,14 +199,14 @@
     return ({
     id:`COMPANY-BIKE-${row.bikeNumber}`,
     code:`DXA-FLEE-BIKE-${row.bikeNumber}`,
-    company:"DexaFleet",
+    company:"Key Arabia",
     head:"Fleet / Vehicle",
     assetCategory:"Bike",
     category:"Fleet / Vehicle",
-    name:`DexaFleet Bike ${row.bikeNumber}`,
+    name:`Key Arabia Bike ${row.bikeNumber}`,
     type:"Bike",
     ownership:"Owned",
-    owningCompany:"DexaFleet",
+    owningCompany:"Key Arabia",
     operating:state.operating,
     approvalStatus:"Approved",
     active:true,
@@ -244,14 +244,14 @@
     documents:[],
     assetPictures:[],
     blocker:state.blocker,
-    notes:`Company-owned DexaFleet bike. ${state.notes}`,
-    source:"DexaFleet bike register and June/July 2026 custody reconciliation supplied 13 July 2026"
+    notes:`Company-owned Key Arabia bike. ${state.notes}`,
+    source:"Key Arabia bike register and June/July 2026 custody reconciliation supplied 13 July 2026"
   });
   });
 
-  window.DexaFleetCompanyAssetData = {
-    companyId:"dexafleet",
-    companyName:"DexaFleet",
+  window.Key ArabiaCompanyAssetData = {
+    companyId:"key_arabia",
+    companyName:"Key Arabia",
     sourceType:"Company supplied register",
     importedAt:"2026-07-13",
     assets,

@@ -1,8 +1,8 @@
 /* Replaceable adapter shape: companyId, companyName, bikeAssignments with service targets, and approved catalog items. */
-window.DexaFleetMaintenanceData = {
-  companyId: "dexafleet",
-  companyName: "DexaFleet",
-  bikeAssignments: (window.DexaFleetCompanyAssetData?.assets || []).map(asset => ({
+window.Key ArabiaMaintenanceData = {
+  companyId: "key_arabia",
+  companyName: "Key Arabia",
+  bikeAssignments: (window.Key ArabiaCompanyAssetData?.assets || []).map(asset => ({
     bike:asset.plate || asset.code,
     riderId:asset.custody === "Assigned to Rider" ? (asset.lastRiderId || "") : "",
     riderName:asset.custody === "Assigned to Rider" ? (asset.currentRider || "") : "",

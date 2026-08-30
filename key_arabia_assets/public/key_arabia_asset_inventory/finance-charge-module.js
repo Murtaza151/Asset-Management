@@ -1,5 +1,5 @@
 (() => {
-  const STORAGE_KEY = 'dexafleet.finance-charge.workspace.v2';
+  const STORAGE_KEY = 'key_arabia.finance-charge.workspace.v2';
   const money = value => `AED ${Number(value || 0).toFixed(2)}`;
   const compactAmount = value => Number(value || 0).toFixed(2);
   const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[character]));
@@ -32,7 +32,7 @@
   };
 
   function loadState() {
-    localStorage.removeItem('dexafleet.finance-charge.workspace.v1');
+    localStorage.removeItem('key_arabia.finance-charge.workspace.v1');
     try {
       const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
       if (saved) return saved;
@@ -144,7 +144,7 @@
 
   function maintenanceCharges() {
     let jobs = [];
-    try { jobs = JSON.parse(localStorage.getItem('dexafleet.maintenance.jobs.v3') || '[]'); } catch {}
+    try { jobs = JSON.parse(localStorage.getItem('key_arabia.maintenance.jobs.v3') || '[]'); } catch {}
     return jobs.filter(job => ['Approved','Ready for Road'].includes(job.status) && Number(job.allocation?.rider || 0) > 0).map(job => ({
       id:`MAINT-${job.id}`,invoice:job.invoice || job.id,date:job.date,time:job.time || '12:00',plate:job.bike,type:job.type,grand:Number(job.cost || 0),companyShare:Number(job.allocation?.company || 0),riderCharge:Number(job.allocation?.rider || 0),status:job.status,evidence:job.invoice ? 'Invoice recorded' : 'Invoice reference missing'
     }));

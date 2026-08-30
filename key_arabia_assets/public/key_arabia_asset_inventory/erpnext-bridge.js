@@ -19,7 +19,7 @@
     const is_system_manager = roles.includes("System Manager");
     const default_company = frappe_context.defaults?.get_default?.("company") || frappe_context.boot?.sysdefaults?.company || "";
 
-    window.DEXAFLEET_CONTEXT = {
+    window.KEY_ARABIA_CONTEXT = {
         user: {
             id: session_user,
             name: user_info.full_name || session_user,
@@ -39,7 +39,7 @@
     window.onPrototypeDataLoad = function (replaceArray, restoreObject, callback) {
         // Remove the preview warning notice from the parent page
         if (parent_window && parent_window.document) {
-            const notice = parent_window.document.querySelector(".dexafleet-preview-notice");
+            const notice = parent_window.document.querySelector(".key_arabia-preview-notice");
             if (notice) {
                 notice.style.display = "none";
             }

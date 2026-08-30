@@ -1,6 +1,6 @@
 # Local Verification Report
 
-## 2026-07-13 — DexaFleet company rider import
+## 2026-07-13 — Key Arabia company rider import
 
 - PASS: 55 company-supplied rider records loaded from the isolated rider-data adapter.
 - PASS: no duplicate Rider IDs, emails, phone numbers, or Emirates ID paper numbers.
@@ -12,13 +12,13 @@
 - PASS: all JavaScript syntax, inline scripts, and local HTML references pass after integration.
 - NOT RUN: interactive `file://` browser testing remains unavailable under the current browser security policy.
 
-## 2026-07-13 — DexaFleet company bike import
+## 2026-07-13 — Key Arabia company bike import
 
 - PASS: 100 company-supplied bike records loaded from the isolated company-data adapter.
 - PASS: all 100 bike numbers are unique.
 - PASS: all 100 chassis numbers are unique and match the 17-character VIN pattern.
 - PASS: all registration expiry values converted successfully to ISO dates.
-- PASS: every imported record is Owned by DexaFleet and classified as Fleet / Vehicle → Bike.
+- PASS: every imported record is Owned by Key Arabia and classified as Fleet / Vehicle → Bike.
 - PASS: the vendor set contains only ALDOBOWI and Bike Care, matching the supplied register.
 - PASS: Maintenance reads the same 100-bike source and leaves rider/service data blank until supplied.
 - NOT RUN: interactive `file://` browser testing remains unavailable under the current browser security policy.
@@ -57,9 +57,9 @@
 
 ## 2026-07-13 — Client / Aggregator master data
 
-- PASS: all 16 requested client/aggregator names exist in the DexaFleet master seed.
+- PASS: all 16 requested client/aggregator names exist in the Key Arabia master seed.
 - PASS: Add Asset aggregator options use the same approved source list.
-- PASS: existing local test data is merged case-insensitively without duplicate DexaFleet entries.
+- PASS: existing local test data is merged case-insensitively without duplicate Key Arabia entries.
 
 ## 2026-07-13 — Navigation verification
 
@@ -88,7 +88,7 @@
 - Audit filter bypass expression removed.
 - Refresh-reset control no longer sets a permanent reset flag.
 - Supabase SQL includes RLS enablement for all new module tables.
-- Existing source package files remain separate; no live DexaFleet module was changed.
+- Existing source package files remain separate; no live Key Arabia module was changed.
 - Monitor/IT location rules exclude parking yard, workshop, police station and vendor yard.
 - Supplier/Dealer master no longer contains workshop records.
 - Asset category changes refresh all linked dropdowns.
@@ -171,7 +171,7 @@
 - Compact topbar, sticky offset and full-width maintenance layout: PASS
 - Asset-wide compact KPI override and responsive columns: PASS
 - In-shell Maintenance Job view with sidebar/topbar retained: PASS
-- Production-style DexaFleet font stack and shared typography scale: PASS
+- Production-style Key Arabia font stack and shared typography scale: PASS
 - Eight-card compact dashboard action row and removed pseudo-title: PASS
 - Bottom shortcut cleanup and retained sidebar Maintenance module: PASS
 - Bikes in Police Custody wording and navigation: PASS

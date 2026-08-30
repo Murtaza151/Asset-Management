@@ -1,11 +1,11 @@
-# DexaFleet Asset Module Integration Contract
+# Key Arabia Asset Module Integration Contract
 
 ## Safe integration order
 
 1. Create a new feature branch in the Lovable-exported project.
 2. Apply `supabase_asset_module.sql` to a Supabase test project first.
 3. Replace prototype arrays/localStorage through one repository/service layer.
-4. Reuse the existing DexaFleet shell, authentication context, company context, sidebar and design tokens.
+4. Reuse the existing Key Arabia shell, authentication context, company context, sidebar and design tokens.
 5. Add the Asset routes under Fleet & Assets without changing Recruitment, Visa, License or Company Admin routes.
 6. Run company isolation and role tests with separate accounts.
 7. Run import, movement, approval, report and audit reconciliation tests.
@@ -13,7 +13,7 @@
 
 ## Required application context
 
-The Lovable application must pass the authenticated user into the module through `window.DEXAFLEET_CONTEXT.user` or the project user-context hook. Required values are `id`, `name`, `role`, `company`, `companyId` and `scope`.
+The Lovable application must pass the authenticated user into the module through `window.KEY_ARABIA_CONTEXT.user` or the project user-context hook. Required values are `id`, `name`, `role`, `company`, `companyId` and `scope`.
 
 The local fallback user exists only for offline prototype testing and must not be used as production authorization.
 

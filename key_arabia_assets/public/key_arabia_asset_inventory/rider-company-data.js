@@ -1,5 +1,5 @@
 /*
- * DexaFleet company rider data adapter.
+ * Key Arabia company rider data adapter.
  * Contains company-supplied personal data. Replace with the existing Lovable/Supabase rider query during integration.
  */
 (() => {
@@ -460,13 +460,13 @@
       emiratesIdPaperNo:clean(row.emiratesIdPaperNo),
       status,
       active:status === "Active",
-      company:"DexaFleet",
-      source:"DexaFleet company rider register supplied 13 July 2026"
+      company:"Key Arabia",
+      source:"Key Arabia company rider register supplied 13 July 2026"
     };
   });
-  window.DexaFleetCompanyRiderData = {
-    companyId:"dexafleet",
-    companyName:"DexaFleet",
+  window.Key ArabiaCompanyRiderData = {
+    companyId:"key_arabia",
+    companyName:"Key Arabia",
     sourceType:"Company supplied rider register",
     importedAt:"2026-07-13",
     riders

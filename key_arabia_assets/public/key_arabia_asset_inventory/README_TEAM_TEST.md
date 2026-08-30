@@ -1,4 +1,4 @@
-# DexaFleet Asset & Inventory Prototype - Team Test Pack
+# Key Arabia Asset & Inventory Prototype - Team Test Pack
 
 ## Open First
 Open `asset-inventory-prototype.html` in Chrome or any modern browser.
@@ -12,7 +12,7 @@ Open `asset-inventory-prototype.html` in Chrome or any modern browser.
 - Import popup using the included Excel workbook as test data reference.
 
 ## Import Test Workbook
-Use `dexafleet_asset_inventory_import_test_pack.xlsx`.
+Use `key_arabia_asset_inventory_import_test_pack.xlsx`.
 
 Recommended order:
 1. Vendor Master
@@ -43,7 +43,7 @@ This is a frontend prototype for business testing. It does not save to productio
 - The Supabase schema and Lovable handover contract are included but must be applied only to a test project before live integration.
 
 ## Release Gate
-Do not integrate into dexafleet.com until developer testing, independent testing, business-team testing, QA review and client UAT are complete. Existing Recruitment, Visa, License and Company Admin routes must remain unchanged.
+Do not integrate into key_arabia.com until developer testing, independent testing, business-team testing, QA review and client UAT are complete. Existing Recruitment, Visa, License and Company Admin routes must remain unchanged.
 # Maintenance Billing Test
 
 Open `maintenance-prototype.html`. Use **New Maintenance Job** to test the finalized controlled billing flow. Select a compulsory Main Work Type, add multiple Extra Items, enter Labour, and allocate the complete Grand Total before submitting. Use the approval audit section to test price-change and new-item approvals.

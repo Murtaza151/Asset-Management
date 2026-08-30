@@ -1,6 +1,6 @@
 (function(){
-  const source=window.DexaFleetMaintenanceData||{catalog:[],bikeAssignments:[],companyId:'dexafleet'};
-  const catalogKey=`dexafleet.maintenance.catalog.${source.companyId}.v1`;
+  const source=window.Key ArabiaMaintenanceData||{catalog:[],bikeAssignments:[],companyId:'key_arabia'};
+  const catalogKey=`key_arabia.maintenance.catalog.${source.companyId}.v1`;
   let companyCatalog=JSON.parse(localStorage.getItem(catalogKey)||'null')||source.catalog.map(x=>({...x}));
   let selectedItems=new Set();
   const assignments=source.bikeAssignments||[];

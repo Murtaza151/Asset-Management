@@ -2272,7 +2272,7 @@
             <div class="report-main-filters">
               <label>Asset Type<select id="reportAssetTypeFilter" onchange="renderReportBuilderPreview()"><option>All asset types</option><option>Bike</option><option>SIM</option><option>Delivery Box</option><option>IT Asset</option><option>Quantity</option></select></label>
               <label class="report-name-filter">Report Name<select id="reportNameSelect" onchange="resetReportKpiFilter();renderReportBuilderPreview()"></select></label>
-              <label>Company<select id="reportCompanyFilter" onchange="renderReportBuilderPreview()"><option>DexaFleet</option><option>Alpha Delivery</option><option>Metro Fleet</option></select></label>
+              <label>Company<select id="reportCompanyFilter" onchange="renderReportBuilderPreview()"><option>Key Arabia</option><option>Alpha Delivery</option><option>Metro Fleet</option></select></label>
               <label>From Date<input id="reportFromDate" type="date" value="2026-07-01" onchange="renderReportBuilderPreview()"></label>
               <label>To Date<input id="reportToDate" type="date" value="2026-07-09" onchange="renderReportBuilderPreview()"></label>
               <label class="report-custody-filter">Custody<select id="reportCustodyFilter" onchange="renderReportBuilderPreview()"><option>All custody</option><option>Assigned to Rider</option><option>In Company Stock</option><option>With Vendor / Workshop</option><option>In Police Station</option></select></label>
@@ -2308,7 +2308,7 @@
   <script src="asset-company-data.js"></script>
   <script>
     const companyMasters = [
-      { name:"DexaFleet", prefix:"DXA", scope:"Tenant" },
+      { name:"Key Arabia", prefix:"DXA", scope:"Tenant" },
       { name:"Alpha Delivery", prefix:"ALP", scope:"Tenant" },
       { name:"Metro Fleet", prefix:"MTF", scope:"Tenant" }
     ];
@@ -2316,12 +2316,12 @@
     const handoverTemplates = [
       {
         id:"HT-DXA-BIKE",
-        company:"DexaFleet",
-        templateName:"DexaFleet Bike Handover Sheet",
+        company:"Key Arabia",
+        templateName:"Key Arabia Bike Handover Sheet",
         movementType:"Both",
         assetType:"Bike",
-        logoText:"DexaFleet",
-        title:"DEXAFLEET",
+        logoText:"Key Arabia",
+        title:"KEY_ARABIA",
         subtitle:"ASSETS HANDOVER",
         license:"TL NO: DXA-2026",
         legalTerms:[
@@ -2442,7 +2442,7 @@
     };
 
     const companyAssetNameOptions = {
-      "DexaFleet": {
+      "Key Arabia": {
         "Bike": ["Rider Bike", "Spare Bike"],
         "SIM": ["Rider SIM"],
         "Delivery Box": ["Delivery Box"]
@@ -2470,7 +2470,7 @@
     ];
 
     const companyLocationOptions = {
-      "DexaFleet": {
+      "Key Arabia": {
         "Store / Warehouse": ["Main Store", "Dubai Main Store"],
         "Branch": ["Head Office", "Sharjah Branch"],
         "Workshop": ["Al Quoz Workshop", "Gulf Rental Workshop"],
@@ -2521,7 +2521,7 @@
     ];
 
     const companyMasterLists = {
-      "DexaFleet": {
+      "Key Arabia": {
         vendors: ["ALDOBOWI", "Bike Care", "Honda Dealer", "Dell Technologies UAE", "HP UAE", "Samsung Gulf", "Office Equipment Supplier"],
         workshops: ["Al Quoz Workshop", "Gulf Rental Workshop"],
         rentalProviders: ["Gulf Rental", "LeaseCo UAE"],
@@ -2687,7 +2687,7 @@
           category:"Fleet Vehicle",
           ownership:vendor.toLowerCase().includes("bike care") || vendor.toLowerCase().includes("aldobowi") ? "Rented" : "Owned",
           owningCompany:vendor,
-          operating:"DexaFleet",
+          operating:"Key Arabia",
           custody:uploadedBikeCustody(bikeStatus),
           holderType:uploadedBikeHolderType(bikeStatus),
           holder:uploadedBikeHolder(bikeStatus, riderId, riderName, vendor),
@@ -2714,12 +2714,12 @@
 
     const uploadedBikeAssets = buildUploadedBikeAssets();
 
-    const assets = (window.DexaFleetCompanyAssetData?.assets || []).map(asset => ({...asset}));
+    const assets = (window.Key ArabiaCompanyAssetData?.assets || []).map(asset => ({...asset}));
 
     const assetEditRequests = [];
 
-    const riders = (window.DexaFleetCompanyRiderData?.riders || []).map(rider => ({...rider}));
-    (window.DexaFleetCompanyAssignmentData?.currentPositions || []).forEach(position => {
+    const riders = (window.Key ArabiaCompanyRiderData?.riders || []).map(rider => ({...rider}));
+    (window.Key ArabiaCompanyAssignmentData?.currentPositions || []).forEach(position => {
       const riderId = String(position.riderId || "").trim();
       if (!riderId || riders.some(rider => String(rider.id) === riderId)) return;
       riders.push({
@@ -2734,7 +2734,7 @@
       });
     });
 
-    const movements = (window.DexaFleetCompanyAssignmentData?.movements || []).map(movement => ({...movement}));
+    const movements = (window.Key ArabiaCompanyAssignmentData?.movements || []).map(movement => ({...movement}));
 
     const movementApprovalRequests = [];
 
@@ -2751,7 +2751,7 @@
     const importEngineTypes = {
       "Asset Master": {
         columns: [
-          ["company", "Required. Must match tenant/company.", "DexaFleet"],
+          ["company", "Required. Must match tenant/company.", "Key Arabia"],
           ["asset_code", "Required for update. Auto allowed only for insert mode.", "DXA-FLEE-BIKE-0001"],
           ["asset_head", "Required. Must exist in Asset Setup.", "Fleet / Vehicle"],
           ["asset_category", "Required. Controls field template.", "Bike"],
@@ -2762,12 +2762,12 @@
           ["condition", "Required.", "Good"],
           ["vendor", "From company vendor master if applicable.", "Honda Dealer"]
         ],
-        sample: ["DexaFleet","DXA-FLEE-BIKE-0001","Fleet / Vehicle","Bike","Honda Unicorn Bike","Owned","Head Office","DB-19384","Good","Honda Dealer"],
+        sample: ["Key Arabia","DXA-FLEE-BIKE-0001","Fleet / Vehicle","Bike","Honda Unicorn Bike","Owned","Head Office","DB-19384","Good","Honda Dealer"],
         rules: ["Duplicate asset code blocked", "Duplicate plate/SIM/serial blocked", "Custom asset names must come from Asset Setup", "New assets enter Pending Approval unless import role is approved"]
       },
       "Asset Movement": {
         columns: [
-          ["company", "Required tenant.", "DexaFleet"],
+          ["company", "Required tenant.", "Key Arabia"],
           ["movement_type", "Required controlled movement type.", "Assign / Handover"],
           ["asset_code", "Required existing asset.", "DB-19384"],
           ["from_holder", "Required current holder match.", "Main Yard"],
@@ -2777,12 +2777,12 @@
           ["condition", "Required.", "Good"],
           ["proof_ref", "Required for high-risk movement.", "PHOTO-BATCH-001"]
         ],
-        sample: ["DexaFleet","Assign / Handover","DB-19384","Main Yard","R-1001 Ahmed Khan","2026-07-09","15:45","Good","PHOTO-BATCH-001"],
+        sample: ["Key Arabia","Assign / Handover","DB-19384","Main Yard","R-1001 Ahmed Khan","2026-07-09","15:45","Good","PHOTO-BATCH-001"],
         rules: ["Movement import creates custody movement, never edits history", "Backdated movement requires approval", "Bike/SIM duplicate active custody is blocked", "Missing proof blocks high-risk movements"]
       },
       "Fine / Salik": {
         columns: [
-          ["company", "Required tenant.", "DexaFleet"],
+          ["company", "Required tenant.", "Key Arabia"],
           ["source", "Required Fine or Salik.", "Fine"],
           ["reference", "Required unique reference.", "DXB-F-3001"],
           ["plate", "Required vehicle plate.", "DB-19384"],
@@ -2790,12 +2790,12 @@
           ["amount", "Required number.", "300"],
           ["status", "Optional. System can calculate review status.", "Review Required"]
         ],
-        sample: ["DexaFleet","Fine","DXB-F-3001","DB-19384","2026-07-06 18:22","300","Review Required"],
+        sample: ["Key Arabia","Fine","DXB-F-3001","DB-19384","2026-07-06 18:22","300","Review Required"],
         rules: ["Reference duplicates blocked", "Custody responsibility matched by exact date/time", "Unmatched plate remains visible in review queue", "Finance charge created only after approval"]
       },
       "Maintenance / Workshop": {
         columns: [
-          ["company", "Required tenant.", "DexaFleet"],
+          ["company", "Required tenant.", "Key Arabia"],
           ["asset_code", "Required bike/vehicle asset.", "DB-19384"],
           ["workshop", "Required vendor master.", "Gulf Rental Workshop"],
           ["job_type", "Required.", "Fitness Inspection"],
@@ -2804,28 +2804,28 @@
           ["rider_charge", "Optional; sends finance request.", "250"],
           ["certificate_ref", "Required for fitness clearance.", "FIT-2026-001"]
         ],
-        sample: ["DexaFleet","DB-19384","Gulf Rental Workshop","Fitness Inspection","GR-9921","850","250","FIT-2026-001"],
+        sample: ["Key Arabia","DB-19384","Gulf Rental Workshop","Fitness Inspection","GR-9921","850","250","FIT-2026-001"],
         rules: ["Workshop must come from vendor master", "Rider charge creates finance request", "Bike cannot return to available stock without fitness clearance", "Invoice/certificate attachments are required in production"]
       },
       "Vendor Master": {
         columns: [
-          ["company", "Required tenant.", "DexaFleet"],
+          ["company", "Required tenant.", "Key Arabia"],
           ["vendor_name", "Required unique inside company.", "Gulf Rental"],
           ["vendor_type", "Required.", "Rental Provider"],
           ["contact", "Optional.", "+971500000000"],
           ["status", "Required.", "Active"]
         ],
-        sample: ["DexaFleet","Gulf Rental","Rental Provider","+971500000000","Active"],
+        sample: ["Key Arabia","Gulf Rental","Rental Provider","+971500000000","Active"],
         rules: ["Vendor names are company-specific", "Duplicate active vendor blocked", "System Super Admin approval required for global vendor"]
       },
       "Location Master": {
         columns: [
-          ["company", "Required tenant.", "DexaFleet"],
+          ["company", "Required tenant.", "Key Arabia"],
           ["location_type", "Required.", "Workshop"],
           ["location_name", "Required.", "Al Quoz Workshop"],
           ["status", "Required.", "Active"]
         ],
-        sample: ["DexaFleet","Workshop","Al Quoz Workshop","Active"],
+        sample: ["Key Arabia","Workshop","Al Quoz Workshop","Active"],
         rules: ["Location type controlled by System Super Admin", "Location name controlled inside tenant", "Inactive locations remain historical"]
       }
     };
@@ -2872,14 +2872,14 @@
     let reportBuilderRenderActive = false;
     let reportSearchValue = "";
     let reportSearchTimer = null;
-    const assetFormStateKey = "dexafleet.assetFormOpen";
-    const movementFormStateKey = "dexafleet.movementFormOpen";
-    const activeSectionStateKey = "dexafleet.assetInventory.activeSection";
-    const reportBuilderStateKey = "dexafleet.assetInventory.reportBuilder";
-    const prototypeDataStateKey = "dexafleet.assetInventory.prototypeData.v5";
-    const localTestDataResetKey = "dexafleet.assetInventory.localTestDataReset.v1";
-    const localTestDataResetBootstrapKey = "dexafleet.assetInventory.localTestDataResetBootstrapped.v1";
-    const loggedInUser = window.DEXAFLEET_CONTEXT?.user || { name:"Ghulam Murtaza", role:"Company Admin", company:"DexaFleet", scope:"Company" };
+    const assetFormStateKey = "key_arabia.assetFormOpen";
+    const movementFormStateKey = "key_arabia.movementFormOpen";
+    const activeSectionStateKey = "key_arabia.assetInventory.activeSection";
+    const reportBuilderStateKey = "key_arabia.assetInventory.reportBuilder";
+    const prototypeDataStateKey = "key_arabia.assetInventory.prototypeData.v5";
+    const localTestDataResetKey = "key_arabia.assetInventory.localTestDataReset.v1";
+    const localTestDataResetBootstrapKey = "key_arabia.assetInventory.localTestDataResetBootstrapped.v1";
+    const loggedInUser = window.KEY_ARABIA_CONTEXT?.user || { name:"Ghulam Murtaza", role:"Company Admin", company:"Key Arabia", scope:"Company" };
     let prototypeStateReady = false;
 
     window.assets = assets;
@@ -3011,10 +3011,10 @@
         return;
       }
       try {
-        localStorage.removeItem("dexafleet.assetInventory.prototypeData.v1");
-        localStorage.removeItem("dexafleet.assetInventory.prototypeData.v2");
-        localStorage.removeItem("dexafleet.assetInventory.prototypeData.v3");
-        localStorage.removeItem("dexafleet.assetInventory.prototypeData.v4");
+        localStorage.removeItem("key_arabia.assetInventory.prototypeData.v1");
+        localStorage.removeItem("key_arabia.assetInventory.prototypeData.v2");
+        localStorage.removeItem("key_arabia.assetInventory.prototypeData.v3");
+        localStorage.removeItem("key_arabia.assetInventory.prototypeData.v4");
         const cleanStartRequested = new URLSearchParams(window.location.search).get("clearLocalTestData") === "1";
         if (cleanStartRequested) {
           clearLocalTestDataState();
@@ -3052,11 +3052,11 @@
     }
 
     function repairPrototypeDataState() {
-      companyMasterLists.DexaFleet ||= {};
-      companyMasterLists.DexaFleet.clients ||= [];
+      companyMasterLists.Key Arabia ||= {};
+      companyMasterLists.Key Arabia.clients ||= [];
       approvedClientAggregatorMasters.forEach(name => {
-        if (!companyMasterLists.DexaFleet.clients.some(existing => existing.toLowerCase() === name.toLowerCase())) {
-          companyMasterLists.DexaFleet.clients.push(name);
+        if (!companyMasterLists.Key Arabia.clients.some(existing => existing.toLowerCase() === name.toLowerCase())) {
+          companyMasterLists.Key Arabia.clients.push(name);
         }
       });
       assets.forEach(asset => {
@@ -3076,7 +3076,7 @@
     function assetById(id) { return assets.find(a => a.id === id); }
     function bikeAssets() { return assets.filter(a => a.type === "Bike"); }
     function simAssets() { return assets.filter(a => a.type === "SIM"); }
-    function assetTenantCompany(a) { return a?.company || "DexaFleet"; }
+    function assetTenantCompany(a) { return a?.company || "Key Arabia"; }
     function canSeeTenantAsset(a) {
       if (!a) return false;
       if (loggedInUser.scope === "System" || loggedInUser.role === "System Super Admin") return true;
@@ -4175,7 +4175,7 @@
     }
 
     function userCompanyContext() {
-      return loggedInUser.company || "DexaFleet";
+      return loggedInUser.company || "Key Arabia";
     }
 
     function isSystemSuperAdmin() {
@@ -4537,8 +4537,8 @@
     function holderFields(a, action) {
       const riderOptions = riders.map(r => `<option value="${r.id} ${r.name}">${r.id} ${r.name}</option>`).join("");
       const staffOptions = `<option>E-220 Sara Admin</option><option>Department - Operations</option><option>Department - IT</option><option>Branch - Head Office</option>`;
-      const company = a.company || loggedInUser.company || "DexaFleet";
-      const locationMaster = companyLocationOptions[company] || companyLocationOptions.DexaFleet || {};
+      const company = a.company || loggedInUser.company || "Key Arabia";
+      const locationMaster = companyLocationOptions[company] || companyLocationOptions.Key Arabia || {};
       const returnLocations = uniqueOptions([...(locationMaster["Store / Warehouse"] || []), ...(locationMaster["Parking Yard"] || []), ...(locationMaster["Branch"] || [])]);
       const storeOptions = returnLocations.map(name => `<option>${name}</option>`).join("");
       const vendorOptions = movementVendorOptions();
@@ -4591,8 +4591,8 @@
     }
 
     function movementVendorOptions() {
-      const company = loggedInUser.company || "DexaFleet";
-      const list = companyMasterLists[company] || companyMasterLists.DexaFleet;
+      const company = loggedInUser.company || "Key Arabia";
+      const list = companyMasterLists[company] || companyMasterLists.Key Arabia;
       const options = uniqueOptions([...(list.vendors || []), ...(list.rentalProviders || []), "Returned to Vendor"]);
       return options.map(name => `<option>${name}</option>`).join("") + `<option value="__add_vendor_master__">+ Add Vendor / Workshop</option>`;
     }
@@ -5141,7 +5141,7 @@
           openModal("Return Location Required", `<div class="notice warning">Enter the new return location before saving this movement.</div>`, `<button class="btn primary" onclick="closeModal();openMovementDialog('${assetId}','${action}','${allocationQueueId}')">Back</button>`);
           return;
         }
-        const company = a.company || loggedInUser.company || "DexaFleet";
+        const company = a.company || loggedInUser.company || "Key Arabia";
         if (!companyLocationOptions[company]) companyLocationOptions[company] = {};
         if (!companyLocationOptions[company]["Store / Warehouse"]) companyLocationOptions[company]["Store / Warehouse"] = [];
         if (!companyLocationOptions[company]["Store / Warehouse"].includes(to)) companyLocationOptions[company]["Store / Warehouse"].push(to);
@@ -5232,7 +5232,7 @@
             <h3>${p.name}</h3><span class="badge ${p.active ? "ok" : "neutral"}">${p.active ? "Active" : "Inactive"}</span>
           </div>
           <p><strong>Aggregator:</strong> ${p.aggregator}</p>
-          <p><strong>DexaFleet issues:</strong> ${p.dexaIssues.join(", ") || "-"}</p>
+          <p><strong>Key Arabia issues:</strong> ${p.dexaIssues.join(", ") || "-"}</p>
           <p><strong>Aggregator issues:</strong> ${p.clientIssues.join(", ") || "-"}</p>
           <p><strong>Documents:</strong> ${p.docs.join(", ")}</p>
           <p><strong>Photo proof:</strong> ${(p.photoProof || []).join(", ") || "-"}</p>
@@ -5703,7 +5703,7 @@
 
     function standardReportFilters() {
       return `<div class="report-filterbar">
-        <label>Company<select><option>DexaFleet</option><option>Alpha Delivery</option><option>Metro Fleet</option></select></label>
+        <label>Company<select><option>Key Arabia</option><option>Alpha Delivery</option><option>Metro Fleet</option></select></label>
         <label>Asset Type<select><option>All asset types</option><option>Bike</option><option>SIM</option><option>Delivery Box</option><option>IT Asset</option></select></label>
         <label>Custody<select><option>All custody</option><option>Assigned to Rider</option><option>In Company Stock</option><option>With Vendor / Workshop</option><option>In Police Station</option></select></label>
         <label>From Date<input type="date" value="2026-07-01"></label>
@@ -5717,7 +5717,7 @@
 
     function reportGeneratedMeta() {
       const val = id => document.getElementById(id)?.value || "";
-      const company = val("reportCompanyFilter") || "DexaFleet";
+      const company = val("reportCompanyFilter") || "Key Arabia";
       const timeOn = document.getElementById("reportUseTimeRange")?.checked;
       const from = timeOn ? `${val("reportFromDate") || "2026-07-01"} ${val("reportFromTime") || "00:00"}` : `${val("reportFromDate") || "2026-07-01"}`;
       const to = timeOn ? `${val("reportToDate") || "2026-07-09"} ${val("reportToTime") || "23:59"}` : `${val("reportToDate") || "2026-07-09"}`;
@@ -5735,7 +5735,7 @@
       openModal("Report Details", `
         <div class="kv">
           <div class="item"><span>Report</span><strong>${val("reportNameSelect") || "Selected Report"}</strong></div>
-          <div class="item"><span>Company</span><strong>${val("reportCompanyFilter") || "DexaFleet"}</strong></div>
+          <div class="item"><span>Company</span><strong>${val("reportCompanyFilter") || "Key Arabia"}</strong></div>
           <div class="item"><span>Time Range</span><strong>${timeOn ? `${val("reportFromTime") || "00:00"} to ${val("reportToTime") || "23:59"}` : "Full day 00:00 to 23:59"}</strong></div>
           <div class="item"><span>Asset Type</span><strong>${val("reportAssetTypeFilter") || "All asset types"}</strong></div>
           <div class="item"><span>Custody</span><strong>${val("reportCustodyFilter") || "All custody"}</strong></div>
@@ -5750,7 +5750,7 @@
       const useTime = !!document.getElementById("reportUseTimeRange")?.checked;
       const searchInput = document.getElementById("reportSearchText");
       return {
-        company: val("reportCompanyFilter") || "DexaFleet",
+        company: val("reportCompanyFilter") || "Key Arabia",
         from: `${val("reportFromDate") || "2026-07-01"}T${useTime ? (val("reportFromTime") || "00:00") : "00:00"}`,
         to: `${val("reportToDate") || "2026-07-09"}T${useTime ? (val("reportToTime") || "23:59") : "23:59"}`,
         assetType: val("reportAssetTypeFilter") || "All asset types",
@@ -5790,7 +5790,7 @@
     function reportFineBaseMatches(fine, asset) {
       const f = currentReportFilters();
       if (asset) return reportAssetBaseMatches(asset);
-      const company = fine.company || "DexaFleet";
+      const company = fine.company || "Key Arabia";
       if (loggedInUser.scope !== "System" && loggedInUser.role !== "System Super Admin" && company !== loggedInUser.company) return false;
       if (f.company && company !== f.company) return false;
       if (f.assetType !== "All asset types" || f.custody !== "All custody") return false;
@@ -6097,7 +6097,7 @@
         if (el) el.value = value;
       };
       set("reportNameSelect", "Fine / Salik Time Responsibility Report");
-      set("reportCompanyFilter", "DexaFleet");
+      set("reportCompanyFilter", "Key Arabia");
       set("reportFromDate", "2026-07-01");
       set("reportFromTime", "00:00");
       set("reportToDate", "2026-07-09");
@@ -6382,7 +6382,7 @@
         return `
           <tr class="clickable" onclick="reviewMovementApproval('${r.id}')">
             <td><strong>${m.id}</strong><div class="small">${a.code || r.assetId} | ${a.name || "-"}</div></td>
-            <td>${a.company || a.owningCompany || "DexaFleet"}<div class="small">To: ${r.assignedApprover || r.approvalRequired}</div></td>
+            <td>${a.company || a.owningCompany || "Key Arabia"}<div class="small">To: ${r.assignedApprover || r.approvalRequired}</div></td>
             <td><span class="badge warn">${requestLabel}</span><div class="small">${m.type || "-"}</div></td>
             <td><span class="badge warn">${r.status || "Pending Approval"}</span><div class="small">${r.requestKind === "Reversal" ? "Reverse movement pending" : "Asset Register unchanged"}</div></td>
             <td>${r.reasons.slice(0, 2).join(", ")}${r.reasons.length > 2 ? ` +${r.reasons.length - 2}` : ""}<div class="small">${m.from || "-"} to ${m.to || "-"}</div></td>
@@ -6635,7 +6635,7 @@
       if (field === "head") return record.head || assetHeadForRecord(record);
       if (field === "assetCategory") return record.assetCategory || assetCategoryForRecord(record);
       if (field === "assetNameScope") {
-        const company = record.company || record.owningCompany || "DexaFleet";
+        const company = record.company || record.owningCompany || "Key Arabia";
         const category = record.assetCategory || assetCategoryForRecord(record);
         const companyNames = companyAssetNameOptions[company]?.[category] || [];
         return companyNames.includes(record.name) ? "Company Library" : "Global Library";
@@ -6663,7 +6663,7 @@
         assetId:before.id,
         assetCode:before.code,
         assetName:before.name,
-        company:before.company || before.owningCompany || "DexaFleet",
+        company:before.company || before.owningCompany || "Key Arabia",
         approvalRequired:proposed.approvalRequired || "Asset Manager",
         requestedBy:loggedInUser.name,
         requestedByRole:loggedInUser.role,
@@ -6946,7 +6946,7 @@
       const selectEl = document.getElementById("assetFormNameSelect");
       if (!selectEl) return;
       const category = val("assetFormCategory") || "Bike";
-      const company = val("assetFormCompany") || "DexaFleet";
+      const company = val("assetFormCompany") || "Key Arabia";
       const approved = uniqueOptions([...(globalAssetNameOptions[category] || []), ...(companyAssetNameOptions[company]?.[category] || [])]);
       const selected = existing?.name || selectEl.value;
       selectEl.innerHTML = `<option value="">Select approved asset name</option>${optionList(approved, selected)}<option value="__add_more__">Add More</option>`;
@@ -6964,9 +6964,9 @@
 
     function locationTypeForRecord(asset) {
       if (asset?.locationType && locationTypes.includes(asset.locationType)) return asset.locationType;
-      const company = asset?.company || asset?.owningCompany || "DexaFleet";
+      const company = asset?.company || asset?.owningCompany || "Key Arabia";
       const location = asset?.location || "Main Store";
-      const master = companyLocationOptions[company] || companyLocationOptions.DexaFleet;
+      const master = companyLocationOptions[company] || companyLocationOptions.Key Arabia;
       const match = locationTypes.find(type => (master[type] || []).includes(location));
       if (match) return match;
       if (asset?.custody === "With Vendor / Workshop") return "Workshop";
@@ -6981,10 +6981,10 @@
     function renderLocationOptions(existing) {
       const nameEl = document.getElementById("assetFormLocationName");
       if (!nameEl) return;
-      const company = val("assetFormCompany") || existing?.company || "DexaFleet";
+      const company = val("assetFormCompany") || existing?.company || "Key Arabia";
       const category = val("assetFormCategory") || assetCategoryForRecord(existing || {});
       const group = fieldGroupForCategory(category);
-      const typeMap = companyLocationOptions[company] || companyLocationOptions.DexaFleet || {};
+      const typeMap = companyLocationOptions[company] || companyLocationOptions.Key Arabia || {};
       const allowedTypes = locationTypesByGroup[group] || ["Store / Warehouse", "Branch"];
       const options = uniqueOptions(allowedTypes.flatMap(type => typeMap[type] || []));
       const existingLocation = existing?.location || nameEl.value;
@@ -7036,7 +7036,7 @@
     }
 
     function generatedAssetCode() {
-      const company = val("assetFormCompany") || "DexaFleet";
+      const company = val("assetFormCompany") || "Key Arabia";
       const head = val("assetFormHead") || "Fleet / Vehicle";
       const category = val("assetFormCategory") || "Bike";
       return `${companyPrefix(company)}-${codePart(head)}-${codePart(category)}-${nextAssetSequence(company, head, category)}`;
@@ -7194,7 +7194,7 @@
       return [...new Set(values.filter(Boolean))];
     }
 
-    function addCompanyMasterRecord(key, value, company = loggedInUser.company || "DexaFleet") {
+    function addCompanyMasterRecord(key, value, company = loggedInUser.company || "Key Arabia") {
       const clean = String(value || "").trim();
       if (!clean) return "";
       if (!companyMasterLists[company]) companyMasterLists[company] = { vendors: [], rentalProviders: [], financeCompanies: [], telecomProviders: [], clients: [] };
@@ -7220,8 +7220,8 @@
     }
 
     function currentHolderOptions(defaults, currentHolder = "") {
-      const company = val("assetFormCompany") || "DexaFleet";
-      const typeMap = companyLocationOptions[company] || companyLocationOptions.DexaFleet || {};
+      const company = val("assetFormCompany") || "Key Arabia";
+      const typeMap = companyLocationOptions[company] || companyLocationOptions.Key Arabia || {};
       const custody = val("assetFormCustody") || defaults.custody;
       if (directVendorIssueSelected()) {
         const vendor = masterValue("assetFormVendor", "assetFormVendorCustom");
@@ -7303,7 +7303,7 @@
     }
 
     function selectedTenantCompany() {
-      return val("assetFormCompany") || "DexaFleet";
+      return val("assetFormCompany") || "Key Arabia";
     }
 
     function tenantMasterOptions(kind, selected = "") {
@@ -7349,7 +7349,7 @@
     }
 
     function savePendingMasterValues() {
-      const company = val("assetFormCompany") || loggedInUser.company || "DexaFleet";
+      const company = val("assetFormCompany") || loggedInUser.company || "Key Arabia";
       [
         ["assetFormVendor", "assetFormVendorCustom", "vendors"],
         ["assetFormFinanceCompany", "assetFormFinanceCompanyCustom", "financeCompanies"],
@@ -7409,7 +7409,7 @@
       const container = document.getElementById("ownershipFields");
       if (!container) return;
       const ownership = val("assetFormOwnership") || existing?.ownership || "Owned";
-      const company = val("assetFormCompany") || existing?.company || existing?.owningCompany || "DexaFleet";
+      const company = val("assetFormCompany") || existing?.company || existing?.owningCompany || "Key Arabia";
       const ownedByCompany = `<div class="field"><label>Owning Company</label><input id="assetFormOwner" value="${company}" readonly></div>`;
       const supplier = `<div class="field"><label>Supplier / Dealer</label>${masterSelect("assetFormVendor", supplierOptionsForCurrentCategory(existing?.vendor || ""), existing?.vendor || "", "Add Supplier / Dealer", "assetFormVendorCustom")}${masterCustomField("assetFormVendorCustom", "Supplier / dealer name")}</div>`;
       const provider = `<div class="field"><label>Rental / Lease Provider</label>${masterSelect("assetFormVendor", tenantMasterOptions("rentalProviders", existing?.vendor || existing?.owningCompany || ""), existing?.vendor || existing?.owningCompany || "", "Add Vendor / Custom", "assetFormVendorCustom")}${masterCustomField("assetFormVendorCustom", "Provider name")}</div>`;
@@ -7621,7 +7621,7 @@
 
     function importTemplateBlankRow(head, category) {
       const columns = importTemplateColumns(head, category);
-      const company = loggedInUser.company || "DexaFleet";
+      const company = loggedInUser.company || "Key Arabia";
       const blank = Object.fromEntries(columns.map(([key]) => [key, ""]));
       blank.company = company;
       blank.asset_head = head;
@@ -7712,7 +7712,7 @@
 
     function buildAssetFromImportedRow(row, head, category) {
       const group = fieldGroupForCategory(category);
-      const company = row.company || loggedInUser.company || "DexaFleet";
+      const company = row.company || loggedInUser.company || "Key Arabia";
       const code = row.asset_code || `${companyPrefix(company)}-${codePart(head)}-${codePart(category)}-${nextAssetSequence(company, head, category)}`;
       const ownership = row.ownership_type || "Owned";
       const custody = row.custody_status || "In Company Stock";
@@ -8120,7 +8120,7 @@
     function val(id) { return document.getElementById(id)?.value || ""; }
 
     function openProfileDialog() {
-      openModal("Add Aggregator / Client Requirement Profile", `<div class="form-grid"><div class="field"><label>Aggregator</label><input value="Careem"></div><div class="field"><label>DexaFleet Issues</label><input value="Bike, SIM"></div><div class="field"><label>Aggregator Issues</label><input value="Bag, platform ID"></div><div class="field"><label>Blocking Documents</label><input value="License packet, handover proofs"></div><div class="field"><label>Status</label><select><option>Active</option><option>Inactive</option></select></div></div>`, `<button class="btn" onclick="closeModal()">Cancel</button><button class="btn primary" onclick="closeModal()">Save Profile</button>`);
+      openModal("Add Aggregator / Client Requirement Profile", `<div class="form-grid"><div class="field"><label>Aggregator</label><input value="Careem"></div><div class="field"><label>Key Arabia Issues</label><input value="Bike, SIM"></div><div class="field"><label>Aggregator Issues</label><input value="Bag, platform ID"></div><div class="field"><label>Blocking Documents</label><input value="License packet, handover proofs"></div><div class="field"><label>Status</label><select><option>Active</option><option>Inactive</option></select></div></div>`, `<button class="btn" onclick="closeModal()">Cancel</button><button class="btn primary" onclick="closeModal()">Save Profile</button>`);
     }
 
     function openSetupMaster(kind) {
@@ -8336,7 +8336,7 @@
           <div class="field"><label>Asset Head</label><select id="importHead" onchange="syncImportCategoryOptions('importHead', 'importCategory');renderImportEngine()">${Object.keys(assetHierarchy).map(head => `<option${head === importTemplateSelection.head ? " selected" : ""}>${head}</option>`).join("")}</select></div>
           <div class="field"><label>Asset Category</label><select id="importCategory" onchange="renderImportEngine()"></select></div>
           <div class="field"><label>Action</label><select id="importMode" onchange="renderImportEngine()"><option>Insert New Records</option><option>Update Existing Records</option><option>Insert or Update - Approval Required</option></select></div>
-          <div class="field"><label>Company</label><select id="importCompany" onchange="renderImportEngine()"><option>DexaFleet</option><option>Alpha Delivery</option><option>Metro Fleet</option></select></div>
+          <div class="field"><label>Company</label><select id="importCompany" onchange="renderImportEngine()"><option>Key Arabia</option><option>Alpha Delivery</option><option>Metro Fleet</option></select></div>
           <div class="field"><label>Status</label><select id="importStatusFilter" onchange="renderImportEngine()"><option>All rows</option><option>Ready</option><option>Warning</option><option>Blocked</option></select></div>
           <div class="field"><label>Upload CSV</label><input id="importFile" type="file" accept=".csv,text/csv" onchange="handleImportFileSelected()"></div>
         </div>
@@ -8387,7 +8387,7 @@
           }
         : importEngineTypes[type];
       const mode = val("importMode") || "Insert New Records";
-      const company = val("importCompany") || "DexaFleet";
+      const company = val("importCompany") || "Key Arabia";
       const ready = importPreview.filter(r => r.status === "Ready").length;
       const warning = importPreview.filter(r => r.status === "Warning").length;
       const blocked = importPreview.filter(r => r.status === "Blocked").length;

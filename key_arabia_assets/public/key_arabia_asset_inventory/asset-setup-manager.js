@@ -2,7 +2,7 @@
   const supported = new Set(["head","category","asset-name","template","location","document","vendors","workshops","rental-providers","finance-companies","telecom-providers","clients"]);
   const listKey = {vendors:"vendors",workshops:"workshops","rental-providers":"rentalProviders","finance-companies":"financeCompanies","telecom-providers":"telecomProviders",clients:"clients"};
   const titles = {head:"Asset Head",category:"Asset Category","asset-name":"Asset Name",template:"Field Template",location:"Location Master",document:"Document Rule",vendors:"Supplier / Dealer",workshops:"Workshop / Vendor","rental-providers":"Rental / Lease Provider","finance-companies":"Finance Company","telecom-providers":"Telecom Provider",clients:"Client / Aggregator"};
-  const stateKey = "dexafleet.assetSetup.manager.v1";
+  const stateKey = "key_arabia.assetSetup.manager.v1";
   let currentKind = "", editing = null;
   const esc = value => String(value ?? "").replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]));
   const norm = value => String(value || "").trim().toLowerCase();

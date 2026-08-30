@@ -1,6 +1,6 @@
-# DexaFleet Asset & Inventory Corrected Local Build
+# Key Arabia Asset & Inventory Corrected Local Build
 
-## 2026-07-13 — DexaFleet company rider register
+## 2026-07-13 — Key Arabia company rider register
 
 - Added 55 company-supplied rider records through the isolated `rider-company-data.js` adapter.
 - Added Rider ID, cleaned display name, source name, email, UAE phone number, Emirates ID paper number, status, and company fields.
@@ -8,12 +8,12 @@
 - Connected the same rider source to handover/takeover selectors and handover-sheet contact details.
 - Included rider records in the temporary data snapshot and browser-state adapter for later Supabase replacement.
 
-## 2026-07-13 — DexaFleet company bike register
+## 2026-07-13 — Key Arabia company bike register
 
 - Added 100 company-supplied bike records through the isolated `asset-company-data.js` adapter.
-- Set every record to Owned / DexaFleet and mapped Bike Number, registration expiry, vendor, and chassis number.
+- Set every record to Owned / Key Arabia and mapped Bike Number, registration expiry, vendor, and chassis number.
 - Normalized hidden bidirectional characters from chassis values and converted dates to ISO format.
-- Added ALDOBOWI and Bike Care to the DexaFleet supplier/vendor master.
+- Added ALDOBOWI and Bike Care to the Key Arabia supplier/vendor master.
 - Connected the same bike source to the Maintenance bike selector without inventing rider or service-history details.
 - Marked missing custody, holder, location, engine, model, meter, insurance, Salik, and purchase details as pending verification.
 
@@ -43,7 +43,7 @@
 
 ## 2026-07-13 — Client / Aggregator master expansion
 
-- Added 16 approved DexaFleet client/aggregator records: Talabat, Noon, Deliveroo, Careem, Amazon, InstaShop, Keeta, Smiles, elGrocer, Carrefour, Quiqup, Shipa Delivery, Emirates Post, EMX, Jeebly, and J&T Express.
+- Added 16 approved Key Arabia client/aggregator records: Talabat, Noon, Deliveroo, Careem, Amazon, InstaShop, Keeta, Smiles, elGrocer, Carrefour, Quiqup, Shipa Delivery, Emirates Post, EMX, Jeebly, and J&T Express.
 - Reused the same adapter list in Add Asset client/aggregator selections.
 - Added a safe data-repair merge so existing browser test storage receives missing records without creating case-insensitive duplicates.
 
@@ -67,7 +67,7 @@
 
 - Prevented automatic local test-data deletion on refresh.
 - Added explicit clean-reset URL behavior only through `?clearLocalTestData=1`.
-- Replaced the hard-coded prototype user with an injectable DexaFleet user context and a company-admin offline fallback.
+- Replaced the hard-coded prototype user with an injectable Key Arabia user context and a company-admin offline fallback.
 - Added Asia/Dubai current date and timestamp helpers.
 - Updated expiry, downtime and Today movement calculations to use the live date.
 - Removed the local Mac filesystem path from exported snapshots.
@@ -82,7 +82,7 @@
 - Replaced the fixed Today KPI date with the current Dubai date.
 - Added a Supabase schema for assets, movements, approvals, audit and import batches.
 - Added tenant RLS baseline policies and database uniqueness constraints.
-- Added a Lovable/Supabase integration contract that protects existing DexaFleet routes and modules.
+- Added a Lovable/Supabase integration contract that protects existing Key Arabia routes and modules.
 - Linked Asset Head and Asset Category changes to Location, Supplier/Dealer, Custody and Blocking Reason refresh.
 - Restricted IT, SIM and stock categories to office/store/branch locations; vehicle-only yards, workshops and police locations no longer appear for a Monitor.
 - Separated workshop masters from supplier/dealer masters.
@@ -172,7 +172,7 @@
 - Maintenance topbar, title spacing and page side padding were reduced to maximize table width and visible rows.
 - Asset Dashboard, Register, Setup and linked KPI grids now use the same compact KPI sizing as Maintenance.
 - New Maintenance Job now opens inside the Fleet & Assets shell with sidebar and topbar retained instead of replacing the complete page.
-- Asset and Maintenance typography now follows the production DexaFleet scale for page titles, sidebar navigation, buttons, filters, KPI labels/values and data tables.
+- Asset and Maintenance typography now follows the production Key Arabia scale for page titles, sidebar navigation, buttons, filters, KPI labels/values and data tables.
 - Asset Setup, Approval Queue and Fine / Salik moved from bottom shortcuts into the compact dashboard action KPI row.
 - Duplicate bottom Maintenance shortcut was removed; the Fleet & Assets sidebar Maintenance module remains the single module entry.
 - ACTION REQUIRED title was removed and Police labels now read Bikes in Police Custody.

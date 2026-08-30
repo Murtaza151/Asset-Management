@@ -6,26 +6,26 @@ frappe.pages["key-arabia-assets-dashboard"].on_page_load = function (wrapper) {
     });
 
     page.set_primary_action(__("Refresh"), () => {
-        page.main.find(".dexafleet-asset-frame")[0]?.contentWindow.location.reload();
+        page.main.find(".key_arabia-asset-frame")[0]?.contentWindow.location.reload();
     }, "refresh");
 
     page.main.html(`
-        <section class="dexafleet-asset-page" aria-label="${__("DexaFleet Asset & Inventory")}">
+        <section class="key_arabia-asset-page" aria-label="${__("Key Arabia Asset & Inventory")}">
             <style>
-                .dexafleet-asset-page {
+                .key_arabia-asset-page {
                     margin: 0;
                     padding: 0;
                     width: 100%;
                     height: 100%;
                     overflow: hidden;
                 }
-                .dexafleet-asset-frame {
+                .key_arabia-asset-frame {
                     width: 100%;
                     border: none;
                     background: transparent;
                     min-height: 720px;
                 }
-                .dexafleet-preview-notice {
+                .key_arabia-preview-notice {
                     background: #fdf6ec;
                     color: #e6a23c;
                     padding: 8px 16px;
@@ -36,19 +36,19 @@ frappe.pages["key-arabia-assets-dashboard"].on_page_load = function (wrapper) {
                     gap: 8px;
                 }
             </style>
-            <div class="dexafleet-preview-notice" role="status">
+            <div class="key_arabia-preview-notice" role="status">
                 <i class="fa fa-info-circle" aria-hidden="true"></i>
                 <span>${__("ERPNext preview: changes on this screen are stored in this browser only and are not yet written to ERPNext records.")}</span>
             </div>
             <iframe
-                class="dexafleet-asset-frame"
-                src="/assets/key_arabia_assets/dexafleet_asset_inventory/asset-inventory-prototype.html"
-                title="${__("DexaFleet Asset & Inventory workspace")}">
+                class="key_arabia-asset-frame"
+                src="/assets/key_arabia_assets/key_arabia_asset_inventory/asset-inventory-prototype.html"
+                title="${__("Key Arabia Asset & Inventory workspace")}">
             </iframe>
         </section>
     `);
 
-    const frame = page.main.find(".dexafleet-asset-frame")[0];
+    const frame = page.main.find(".key_arabia-asset-frame")[0];
     frame.addEventListener("load", () => resize_asset_frame(frame));
 };
 
@@ -67,7 +67,7 @@ function resize_asset_frame(frame) {
     try {
         const observer = new ResizeObserver(resize);
         observer.observe(frame.contentDocument.documentElement);
-        frame._dexafleet_resize_observer = observer;
+        frame._key_arabia_resize_observer = observer;
     } catch (error) {
         // The minimum height remains usable when ResizeObserver is unavailable.
     }
