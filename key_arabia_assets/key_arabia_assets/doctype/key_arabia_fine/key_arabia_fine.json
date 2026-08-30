@@ -1,0 +1,33 @@
+{
+ "actions":[], "allow_import":1, "autoname":"field:fine_number", "doctype":"DocType", "engine":"InnoDB",
+ "field_order":["fine_number","company","plate_number","issued_at","amount","column_break_1","details","location","status","matching_section","asset","matched_movement","rider","match_status","match_reason","charge_run","source_file","import_batch"],
+ "fields":[
+  {"fieldname":"fine_number","fieldtype":"Data","in_global_search":1,"in_list_view":1,"label":"Fine Number","reqd":1,"unique":1},
+  {"fieldname":"company","fieldtype":"Link","in_list_view":1,"label":"Company","options":"Company","reqd":1},
+  {"fieldname":"plate_number","fieldtype":"Data","in_list_view":1,"label":"Plate Number","reqd":1},
+  {"fieldname":"issued_at","fieldtype":"Datetime","in_list_view":1,"label":"Issued At","reqd":1},
+  {"fieldname":"amount","fieldtype":"Currency","in_list_view":1,"label":"Amount","non_negative":1,"reqd":1},
+  {"fieldname":"column_break_1","fieldtype":"Column Break"},
+  {"fieldname":"details","fieldtype":"Small Text","label":"Details"},
+  {"fieldname":"location","fieldtype":"Data","label":"Location"},
+  {"default":"Unreviewed","fieldname":"status","fieldtype":"Select","in_list_view":1,"label":"Status","options":"Unreviewed\nMatched\nException\nApproved for Charge\nIncluded in Charge Run\nPosted\nWaived","reqd":1},
+  {"fieldname":"matching_section","fieldtype":"Section Break","label":"Custody Matching"},
+  {"fieldname":"asset","fieldtype":"Link","label":"Asset","options":"Asset","read_only":1},
+  {"fieldname":"matched_movement","fieldtype":"Link","label":"Matched Custody Movement","options":"Key Arabia Custody Movement","read_only":1},
+  {"fieldname":"rider","fieldtype":"Link","label":"Responsible Rider","options":"Key Arabia Rider","read_only":1},
+  {"default":"Not Matched","fieldname":"match_status","fieldtype":"Select","label":"Match Status","options":"Not Matched\nMatched\nNo Asset\nNo Custody\nNo Rider\nOverlap\nManual Review","read_only":1},
+  {"fieldname":"match_reason","fieldtype":"Small Text","label":"Match Reason","read_only":1},
+  {"fieldname":"charge_run","fieldtype":"Link","label":"Rider Charge Run","options":"Key Arabia Rider Charge Run","read_only":1},
+  {"fieldname":"source_file","fieldtype":"Attach","label":"Source File"},
+  {"fieldname":"import_batch","fieldtype":"Link","label":"Import Batch","options":"Key Arabia Import Batch","read_only":1}
+ ],
+ "links":[], "module":"Key Arabia Assets", "name":"Key Arabia Fine", "naming_rule":"By fieldname",
+ "permissions":[
+  {"create":1,"export":1,"import":1,"print":1,"read":1,"report":1,"role":"Key Arabia Finance User","write":1},
+  {"create":1,"delete":1,"export":1,"import":1,"print":1,"read":1,"report":1,"role":"Key Arabia Finance Manager","share":1,"write":1},
+  {"export":1,"print":1,"read":1,"report":1,"role":"Key Arabia Operations Manager"},
+  {"create":1,"delete":1,"export":1,"print":1,"read":1,"report":1,"role":"Key Arabia Company Admin","share":1,"write":1}
+ ],
+ "search_fields":"fine_number,plate_number,rider,asset", "sort_field":"issued_at", "sort_order":"DESC", "title_field":"fine_number", "track_changes":1
+}
+

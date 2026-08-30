@@ -1,2 +1,0 @@
-{"add_total_row":1,"columns":[],"disabled":0,"doctype":"Report","is_standard":"Yes","module":"DexaFleet Assets","name":"DexaFleet Maintenance Costs","prepared_report":0,"ref_doctype":"DexaFleet Maintenance Job","report_name":"DexaFleet Maintenance Costs","report_type":"Script Report","roles":[{"role":"DexaFleet Workshop Manager"},{"role":"DexaFleet Finance User"},{"role":"DexaFleet Company Admin"}]}
-

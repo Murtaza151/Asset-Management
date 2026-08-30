@@ -1,4 +1,4 @@
-# Installation — DexaFleet Assets 1.0
+# Installation — Key Arabia Assets 2.0
 
 ## Supported platform
 
@@ -14,10 +14,10 @@ Always take a verified database and files backup before installing an app on an 
 Run from the Frappe Bench directory:
 
 ```bash
-bench get-app https://github.com/Murtaza151/Asset-Management.git --branch v1.0.0
-bench --site <site-name> install-app dexafleet_assets
+bench get-app https://github.com/Murtaza151/Key-Arabia-Asset-Management.git --branch v2.0.0
+bench --site <site-name> install-app key_arabia_assets
 bench --site <site-name> migrate
-bench build --app dexafleet_assets
+bench build --app key_arabia_assets
 bench --site <site-name> clear-cache
 bench restart
 ```
@@ -29,17 +29,17 @@ bench --site <site-name> list-apps
 bench --site <site-name> doctor
 ```
 
-`dexafleet_assets` must appear in `list-apps`.
+`key_arabia_assets` must appear in `list-apps`.
 
 ## Upgrade
 
 ```bash
-cd apps/dexafleet_assets
+cd apps/key_arabia_assets
 git fetch --tags
 git checkout <tested-release-tag>
 cd ../..
 bench --site <site-name> migrate
-bench build --app dexafleet_assets
+bench build --app key_arabia_assets
 bench --site <site-name> clear-cache
 bench restart
 ```
@@ -50,17 +50,17 @@ Uninstalling deletes DocType data owned by this app. Export required records and
 
 ```bash
 bench --site <site-name> backup --with-files
-bench --site <site-name> uninstall-app dexafleet_assets
+bench --site <site-name> uninstall-app key_arabia_assets
 ```
 
-Standard ERPNext Asset records are not owned by this app, but DexaFleet custom fields and links require a reviewed cleanup plan before permanent removal.
+Standard ERPNext Asset records are not owned by this app, but Key Arabia custom fields and links require a reviewed cleanup plan before permanent removal.
 
 ## Initial configuration
 
-1. Open **DexaFleet Assets Settings**.
+1. Open **Key Arabia Assets Settings**.
 2. Select the default Company and alert thresholds.
 3. Assign Company User Permissions to every non-System-Manager user.
-4. Assign only the required DexaFleet roles.
+4. Assign only the required Key Arabia roles.
 5. Review the seeded maintenance catalogue and approved prices per Company.
 6. Create riders, aggregator profiles, asset requests, and custody history.
 7. Test with non-production data before importing operational records.

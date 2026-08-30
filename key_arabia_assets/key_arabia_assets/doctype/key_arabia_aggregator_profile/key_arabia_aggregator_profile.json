@@ -1,0 +1,24 @@
+{
+ "actions": [], "allow_import": 1, "allow_rename": 1, "autoname": "format:{company}-{aggregator_name}", "doctype": "DocType", "engine": "InnoDB",
+ "field_order": ["aggregator_name", "company", "customer", "is_active", "requirements_section", "required_assets", "required_documents", "return_rules", "blocking_rules", "notes"],
+ "fields": [
+  {"fieldname":"aggregator_name","fieldtype":"Data","in_global_search":1,"in_list_view":1,"label":"Aggregator / Client Name","reqd":1},
+  {"fieldname":"company","fieldtype":"Link","in_list_view":1,"label":"Company","options":"Company","reqd":1},
+  {"fieldname":"customer","fieldtype":"Link","label":"Customer","options":"Customer"},
+  {"default":"1","fieldname":"is_active","fieldtype":"Check","in_list_view":1,"label":"Active"},
+  {"fieldname":"requirements_section","fieldtype":"Section Break","label":"Requirements"},
+  {"fieldname":"required_assets","fieldtype":"Small Text","label":"Required Assets / Package"},
+  {"fieldname":"required_documents","fieldtype":"Small Text","label":"Required Documents"},
+  {"fieldname":"return_rules","fieldtype":"Small Text","label":"Return Rules"},
+  {"fieldname":"blocking_rules","fieldtype":"Small Text","label":"Blocking Rules"},
+  {"fieldname":"notes","fieldtype":"Text Editor","label":"Notes"}
+ ],
+ "links": [], "module":"Key Arabia Assets", "name":"Key Arabia Aggregator Profile", "naming_rule":"Expression",
+ "permissions":[
+  {"export":1,"print":1,"read":1,"report":1,"role":"Key Arabia Asset User"},
+  {"create":1,"export":1,"print":1,"read":1,"report":1,"role":"Key Arabia Operations Manager","write":1},
+  {"create":1,"delete":1,"export":1,"print":1,"read":1,"report":1,"role":"Key Arabia Company Admin","share":1,"write":1}
+ ],
+ "search_fields":"aggregator_name,customer", "sort_field":"aggregator_name", "sort_order":"ASC", "title_field":"aggregator_name", "track_changes":1
+}
+

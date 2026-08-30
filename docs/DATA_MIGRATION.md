@@ -8,9 +8,9 @@ The repository retains the original ZIP under `source-package/` and the extracte
 
 1. Company, users, roles, and Company User Permissions.
 2. ERPNext Asset Categories, Locations, Suppliers, and Customers.
-3. DexaFleet Aggregator Profiles and maintenance catalogue.
-4. DexaFleet Riders.
-5. ERPNext Assets and DexaFleet operational fields.
+3. Key Arabia Aggregator Profiles and maintenance catalogue.
+4. Key Arabia Riders.
+5. ERPNext Assets and Key Arabia operational fields.
 6. Custody Movements in ascending timestamp order.
 7. Bike Packages and active Replacement Assignments.
 8. Maintenance history.

@@ -1,0 +1,19 @@
+{
+ "actions": [],
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["charge_to", "amount", "reference_type", "reference_name", "remarks"],
+ "fields": [
+  {"fieldname": "charge_to", "fieldtype": "Select", "in_list_view": 1, "label": "Charge To", "options": "Company\nRider\nVendor / Warranty\nInsurance", "reqd": 1},
+  {"fieldname": "amount", "fieldtype": "Currency", "in_list_view": 1, "label": "Amount", "non_negative": 1, "reqd": 1},
+  {"fieldname": "reference_type", "fieldtype": "Link", "label": "Reference Type", "options": "DocType"},
+  {"fieldname": "reference_name", "fieldtype": "Dynamic Link", "label": "Reference", "options": "reference_type"},
+  {"fieldname": "remarks", "fieldtype": "Small Text", "label": "Remarks"}
+ ],
+ "istable": 1,
+ "module": "Key Arabia Assets",
+ "name": "Key Arabia Charge Allocation",
+ "permissions": []
+}
+

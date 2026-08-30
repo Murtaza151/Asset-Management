@@ -1,5 +1,5 @@
 include README.md
 include license.txt
-recursive-include dexafleet_assets *.css *.csv *.html *.ico *.js *.json *.md *.png *.py *.svg *.txt
-recursive-exclude dexafleet_assets *.pyc
+recursive-include key_arabia_assets *.css *.csv *.html *.ico *.js *.json *.md *.png *.py *.svg *.txt
+recursive-exclude key_arabia_assets *.pyc
 

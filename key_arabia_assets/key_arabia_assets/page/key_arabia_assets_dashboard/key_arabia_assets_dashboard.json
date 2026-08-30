@@ -1,0 +1,24 @@
+{
+ "content": null,
+ "doctype": "Page",
+ "icon": "fa fa-truck",
+ "module": "Key Arabia Assets",
+ "name": "key-arabia-assets-dashboard",
+ "page_name": "key-arabia-assets-dashboard",
+ "roles": [
+  {"role": "Key Arabia Asset User"},
+  {"role": "Key Arabia Asset Manager"},
+  {"role": "Key Arabia Operations Manager"},
+  {"role": "Key Arabia Workshop Manager"},
+  {"role": "Key Arabia Finance User"},
+  {"role": "Key Arabia Finance Manager"},
+  {"role": "Key Arabia Company Admin"},
+  {"role": "System Manager"}
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "Key Arabia Assets"
+}
+

@@ -1,0 +1,44 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:rider_id",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["identity_section", "rider_id", "rider_name", "company", "column_break_1", "employee", "user", "aggregator", "contact_section", "email", "phone", "emirates_id", "column_break_2", "status", "source_reference", "notes"],
+ "fields": [
+  {"fieldname": "identity_section", "fieldtype": "Section Break", "label": "Identity"},
+  {"fieldname": "rider_id", "fieldtype": "Data", "in_list_view": 1, "label": "Rider ID", "reqd": 1, "unique": 1},
+  {"fieldname": "rider_name", "fieldtype": "Data", "in_global_search": 1, "in_list_view": 1, "label": "Rider Name", "reqd": 1},
+  {"fieldname": "company", "fieldtype": "Link", "in_list_view": 1, "label": "Company", "options": "Company", "reqd": 1},
+  {"fieldname": "column_break_1", "fieldtype": "Column Break"},
+  {"fieldname": "employee", "fieldtype": "Link", "label": "Employee", "options": "Employee"},
+  {"fieldname": "user", "fieldtype": "Link", "label": "User", "options": "User"},
+  {"fieldname": "aggregator", "fieldtype": "Link", "label": "Aggregator / Client", "options": "Key Arabia Aggregator Profile"},
+  {"fieldname": "contact_section", "fieldtype": "Section Break", "label": "Contact and Status"},
+  {"fieldname": "email", "fieldtype": "Data", "label": "Email", "options": "Email"},
+  {"fieldname": "phone", "fieldtype": "Data", "label": "Phone", "options": "Phone"},
+  {"fieldname": "emirates_id", "fieldtype": "Data", "label": "Emirates ID"},
+  {"fieldname": "column_break_2", "fieldtype": "Column Break"},
+  {"default": "Active", "fieldname": "status", "fieldtype": "Select", "in_list_view": 1, "label": "Status", "options": "Active\nOn Vacation\nSuspended\nInactive\nDetails Pending", "reqd": 1},
+  {"fieldname": "source_reference", "fieldtype": "Data", "label": "Source Reference"},
+  {"fieldname": "notes", "fieldtype": "Small Text", "label": "Notes"}
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "module": "Key Arabia Assets",
+ "name": "Key Arabia Rider",
+ "naming_rule": "By fieldname",
+ "permissions": [
+  {"create": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "Key Arabia Asset Manager", "share": 1, "write": 1},
+  {"create": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "Key Arabia Operations Manager", "write": 1},
+  {"export": 1, "print": 1, "read": 1, "report": 1, "role": "Key Arabia Finance User"},
+  {"create": 1, "delete": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "Key Arabia Company Admin", "share": 1, "write": 1}
+ ],
+ "search_fields": "rider_id,rider_name,email,phone,emirates_id",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "rider_name",
+ "track_changes": 1
+}
+

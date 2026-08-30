@@ -1,0 +1,32 @@
+{
+ "actions": [], "allow_import": 1, "autoname":"naming_series:", "doctype":"DocType", "engine":"InnoDB",
+ "field_order":["naming_series","company","bike","rider","aggregator","status","package_section","delivery_box","helmet","sim_asset","salik_tag_asset","column_break_1","gps_tracker","phone_holder","keys_available","blocking_reason","ready_at","notes"],
+ "fields":[
+  {"default":"DBP-.YYYY.-.#####","fieldname":"naming_series","fieldtype":"Select","hidden":1,"label":"Series","options":"DBP-.YYYY.-.#####"},
+  {"fieldname":"company","fieldtype":"Link","in_list_view":1,"label":"Company","options":"Company","reqd":1},
+  {"fieldname":"bike","fieldtype":"Link","in_global_search":1,"in_list_view":1,"label":"Bike","options":"Asset","reqd":1,"unique":1},
+  {"fieldname":"rider","fieldtype":"Link","label":"Rider","options":"Key Arabia Rider"},
+  {"fieldname":"aggregator","fieldtype":"Link","label":"Aggregator","options":"Key Arabia Aggregator Profile"},
+  {"default":"Draft","fieldname":"status","fieldtype":"Select","in_list_view":1,"label":"Status","options":"Draft\nBox at Workshop\nBike Waiting for Box\nBike + Box Ready\nReady for Rider Handover\nBlocked\nIssued","reqd":1},
+  {"fieldname":"package_section","fieldtype":"Section Break","label":"Package Assets"},
+  {"fieldname":"delivery_box","fieldtype":"Link","label":"Delivery Box","options":"Asset"},
+  {"fieldname":"helmet","fieldtype":"Link","label":"Helmet","options":"Asset"},
+  {"fieldname":"sim_asset","fieldtype":"Link","label":"SIM Asset","options":"Asset"},
+  {"fieldname":"salik_tag_asset","fieldtype":"Link","label":"Salik Tag Asset","options":"Asset"},
+  {"fieldname":"column_break_1","fieldtype":"Column Break"},
+  {"fieldname":"gps_tracker","fieldtype":"Link","label":"GPS Tracker","options":"Asset"},
+  {"default":"0","fieldname":"phone_holder","fieldtype":"Check","label":"Phone Holder"},
+  {"default":"0","fieldname":"keys_available","fieldtype":"Check","label":"Keys Available"},
+  {"fieldname":"blocking_reason","fieldtype":"Small Text","label":"Blocking Reason"},
+  {"fieldname":"ready_at","fieldtype":"Datetime","label":"Ready At","read_only":1},
+  {"fieldname":"notes","fieldtype":"Small Text","label":"Notes"}
+ ],
+ "links":[], "module":"Key Arabia Assets", "name":"Key Arabia Bike Package", "naming_rule":"By \"Naming Series\" field",
+ "permissions":[
+  {"create":1,"print":1,"read":1,"role":"Key Arabia Asset User","write":1},
+  {"create":1,"export":1,"print":1,"read":1,"report":1,"role":"Key Arabia Operations Manager","write":1},
+  {"create":1,"delete":1,"export":1,"print":1,"read":1,"report":1,"role":"Key Arabia Company Admin","share":1,"write":1}
+ ],
+ "search_fields":"bike,rider,delivery_box,sim_asset", "sort_field":"modified", "sort_order":"DESC", "title_field":"bike", "track_changes":1
+}
+

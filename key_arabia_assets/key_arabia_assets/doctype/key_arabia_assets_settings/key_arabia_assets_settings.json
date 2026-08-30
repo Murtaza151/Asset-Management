@@ -1,0 +1,25 @@
+{
+ "actions":[], "doctype":"DocType", "engine":"InnoDB",
+ "field_order":["defaults_section","default_company","default_asset_manager_role","default_operations_manager_role","default_finance_manager_role","alerts_section","expiry_alert_days","high_maintenance_cost","service_due_warning_km","finance_section","rider_charge_posting_mode","rider_charge_account","company_charge_account","enable_fine_salik","enable_maintenance","enable_replacements"],
+ "fields":[
+  {"fieldname":"defaults_section","fieldtype":"Section Break","label":"Defaults"},
+  {"fieldname":"default_company","fieldtype":"Link","label":"Default Company","options":"Company"},
+  {"default":"Key Arabia Asset Manager","fieldname":"default_asset_manager_role","fieldtype":"Link","label":"Asset Manager Role","options":"Role"},
+  {"default":"Key Arabia Operations Manager","fieldname":"default_operations_manager_role","fieldtype":"Link","label":"Operations Manager Role","options":"Role"},
+  {"default":"Key Arabia Finance Manager","fieldname":"default_finance_manager_role","fieldtype":"Link","label":"Finance Manager Role","options":"Role"},
+  {"fieldname":"alerts_section","fieldtype":"Section Break","label":"Alerts"},
+  {"default":"30","fieldname":"expiry_alert_days","fieldtype":"Int","label":"Expiry Alert Days","non_negative":1},
+  {"default":"1000","fieldname":"high_maintenance_cost","fieldtype":"Currency","label":"High Maintenance Cost"},
+  {"default":"500","fieldname":"service_due_warning_km","fieldtype":"Int","label":"Service Due Warning (KM)"},
+  {"fieldname":"finance_section","fieldtype":"Section Break","label":"Finance Integration"},
+  {"default":"Manual Reference","fieldname":"rider_charge_posting_mode","fieldtype":"Select","label":"Rider Charge Posting Mode","options":"Manual Reference\nJournal Entry\nAdditional Salary"},
+  {"fieldname":"rider_charge_account","fieldtype":"Link","label":"Rider Charge Account","options":"Account"},
+  {"fieldname":"company_charge_account","fieldtype":"Link","label":"Company Charge Account","options":"Account"},
+  {"default":"1","fieldname":"enable_fine_salik","fieldtype":"Check","label":"Enable Fine / Salik"},
+  {"default":"1","fieldname":"enable_maintenance","fieldtype":"Check","label":"Enable Maintenance"},
+  {"default":"1","fieldname":"enable_replacements","fieldtype":"Check","label":"Enable Replacements"}
+ ],
+ "issingle":1, "module":"Key Arabia Assets", "name":"Key Arabia Assets Settings",
+ "permissions":[{"create":1,"read":1,"role":"Key Arabia Company Admin","write":1},{"create":1,"read":1,"role":"System Manager","write":1}], "track_changes":1
+}
+

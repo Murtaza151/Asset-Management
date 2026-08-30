@@ -1,16 +1,16 @@
-# DexaFleet Asset Management
+# Key Arabia Asset Management
 
-ERPNext/Frappe application project for DexaFleet asset, custody, maintenance, Fine/Salik, rider-charge, approval, reporting, and audit workflows.
+ERPNext/Frappe application project for Key Arabia asset, custody, maintenance, Fine/Salik, rider-charge, approval, reporting, and audit workflows.
 
 ## Repository status
 
-The installable Frappe package is named `dexafleet_assets` and targets ERPNext/Frappe v15. This public repository contains only the reviewed application code and safe operational documentation.
+The installable Frappe package is named `key_arabia_assets` and targets ERPNext/Frappe v15. This public repository contains only the reviewed application code and safe operational documentation.
 
 Use a test site and a verified backup before installing on an existing ERPNext site. See `docs/INSTALLATION.md` and the release notes for the exact version tested by the current release.
 
 ## Contents
 
-- `dexafleet_assets/` — installable Frappe application package.
+- `key_arabia_assets/` — installable Frappe application package.
 - `docs/` — installation, administration, and data-migration guidance.
 
 ## Delivered modules
@@ -27,10 +27,10 @@ Use a test site and a verified backup before installing on an existing ERPNext s
 ## Installation flow
 
 ```bash
-bench get-app https://github.com/Murtaza151/Asset-Management.git --branch v1.0.0
-bench --site <site-name> install-app dexafleet_assets
+bench get-app https://github.com/Murtaza151/Key-Arabia-Asset-Management.git --branch v2.0.0
+bench --site <site-name> install-app key_arabia_assets
 bench --site <site-name> migrate
-bench build --app dexafleet_assets
+bench build --app key_arabia_assets
 ```
 
 Detailed installation, configuration, upgrade, and uninstall notes are in [docs/INSTALLATION.md](docs/INSTALLATION.md).

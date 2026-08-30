@@ -1,0 +1,38 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "format:{company}-{item_name}",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["item_name", "company", "item_type", "column_break_1", "approved_price", "service_interval_km", "is_active", "rules_section", "required_evidence", "alert_update", "approval_reference", "effective_from"],
+ "fields": [
+  {"fieldname": "item_name", "fieldtype": "Data", "in_global_search": 1, "in_list_view": 1, "label": "Item Name", "reqd": 1},
+  {"fieldname": "company", "fieldtype": "Link", "in_list_view": 1, "label": "Company", "options": "Company", "reqd": 1},
+  {"fieldname": "item_type", "fieldtype": "Select", "in_list_view": 1, "label": "Item Type", "options": "Main Work\nExtra Item\nLabour", "reqd": 1},
+  {"fieldname": "column_break_1", "fieldtype": "Column Break"},
+  {"fieldname": "approved_price", "fieldtype": "Currency", "in_list_view": 1, "label": "Approved Price", "non_negative": 1, "reqd": 1},
+  {"fieldname": "service_interval_km", "fieldtype": "Int", "label": "Service Interval (KM)", "non_negative": 1},
+  {"default": "1", "fieldname": "is_active", "fieldtype": "Check", "in_list_view": 1, "label": "Active"},
+  {"fieldname": "rules_section", "fieldtype": "Section Break", "label": "Rules"},
+  {"fieldname": "required_evidence", "fieldtype": "Small Text", "label": "Required Evidence"},
+  {"fieldname": "alert_update", "fieldtype": "Small Text", "label": "Alert Update"},
+  {"fieldname": "approval_reference", "fieldtype": "Data", "label": "Approval Reference"},
+  {"default": "Today", "fieldname": "effective_from", "fieldtype": "Date", "label": "Effective From"}
+ ],
+ "links": [],
+ "module": "Key Arabia Assets",
+ "name": "Key Arabia Maintenance Item",
+ "naming_rule": "Expression",
+ "permissions": [
+  {"export": 1, "print": 1, "read": 1, "report": 1, "role": "Key Arabia Workshop User"},
+  {"create": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "Key Arabia Workshop Manager", "write": 1},
+  {"create": 1, "delete": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "Key Arabia Company Admin", "share": 1, "write": 1}
+ ],
+ "search_fields": "item_name,item_type",
+ "sort_field": "item_name",
+ "sort_order": "ASC",
+ "title_field": "item_name",
+ "track_changes": 1
+}
+
