@@ -26,3 +26,185 @@ def dashboard(company: str | None = None):
         "fine_exceptions": frappe.db.count("Key Arabia Fine", {**filters, "status": "Exception"}),
         "salik_exceptions": frappe.db.count("Key Arabia Salik Transaction", {**filters, "status": "Exception"}),
     }
+
+
+@frappe.whitelist()
+def load_prototype_data():
+    riders = frappe.get_all("Key Arabia Rider", fields=["name as id", "rider_name as name", "phone", "email", "status", "emirates_id as emiratesId"])
+    
+    assets_raw = frappe.get_all("Asset", fields=[
+        "name as id", "item_code as code", "asset_name as name", 
+        "key_arabia_asset_category as category", "key_arabia_asset_head as assetHead",
+        "key_arabia_plate_number as plate", "key_arabia_chassis_number as chassis",
+        "key_arabia_engine_number as engine", "key_arabia_current_rider as currentRider",
+        "key_arabia_custody_status as custody", "key_arabia_insurance_expiry as insuranceExpiry",
+        "key_arabia_registration_expiry as registrationExpiry", "key_arabia_salik_tag as salikTag"
+    ])
+    
+    assets = []
+    for a in assets_raw:
+        assets.append({
+            "id": a.id,
+            "code": a.code or "Bike",
+            "name": a.name,
+            "type": "Bike",
+            "category": a.category or "Fleet Vehicle",
+            "assetCategory": a.category or "Bike",
+            "assetHead": a.assetHead or "Fleet / Vehicle",
+            "ownership": "Owned",
+            "owningCompany": "Key Arabia",
+            "operating": "Key Arabia",
+            "location": "Main Yard",
+            "plate": a.plate or "",
+            "chassis": a.chassis or "",
+            "engine": a.engine or "",
+            "model": "Honda Unicorn",
+            "vendor": "Honda Dealer",
+            "contractStart": "",
+            "contractEnd": "",
+            "vehicleExpiry": str(a.registrationExpiry) if a.registrationExpiry else "",
+            "insuranceExpiry": str(a.insuranceExpiry) if a.insuranceExpiry else "",
+            "km": 0,
+            "currentRider": a.currentRider or "",
+            "custody": a.custody or "In Company Stock",
+            "salikTag": a.salikTag or "",
+            "notes": ""
+        })
+
+    movements_raw = frappe.get_all("Key Arabia Custody Movement", fields=[
+        "name as id", "movement_type as type", "asset as assetId", 
+        "from_holder as fromHolder", "to_holder as toHolder", "creation"
+    ], order_by="creation desc")
+    
+    movements = []
+    for m in movements_raw:
+        dt = m.creation
+        movements.append({
+            "id": m.id,
+            "type": m.type,
+            "assetId": m.assetId,
+            "assetCode": m.assetId,
+            "assetName": frappe.db.get_value("Asset", m.assetId, "asset_name") or "",
+            "fromHolder": m.fromHolder,
+            "toHolder": m.toHolder,
+            "date": dt.strftime("%Y-%m-%d") if dt else "",
+            "time": dt.strftime("%H:%M") if dt else "",
+            "status": "Approved",
+            "actor": "System Manager",
+            "proofRef": ""
+        })
+
+    return {
+        "riders": riders,
+        "assets": assets,
+        "movements": movements
+    }
+
+
+@frappe.whitelist()
+def save_assets(assets):
+    import json
+    from frappe.utils import getdate
+    if isinstance(assets, str):
+        assets = json.loads(assets)
+    
+    for a in assets:
+        asset_name = a.get("id")
+        exists = frappe.db.exists("Asset", asset_name) if asset_name else None
+        
+        if not exists and a.get("plate"):
+            exists = frappe.db.get_value("Asset", {"key_arabia_plate_number": a.get("plate")}, "name")
+            
+        if exists:
+            doc = frappe.get_doc("Asset", exists)
+            doc.asset_name = a.get("name")
+            doc.key_arabia_plate_number = a.get("plate")
+            doc.key_arabia_chassis_number = a.get("chassis")
+            doc.key_arabia_engine_number = a.get("engine")
+            doc.key_arabia_insurance_expiry = getdate(a.get("insuranceExpiry")) if a.get("insuranceExpiry") else None
+            doc.key_arabia_registration_expiry = getdate(a.get("vehicleExpiry")) if a.get("vehicleExpiry") else None
+            doc.key_arabia_salik_tag = a.get("salikTag")
+            doc.key_arabia_custody_status = a.get("custody") or "In Company Stock"
+            doc.key_arabia_current_rider = a.get("currentRider")
+            doc.save()
+        else:
+            doc = frappe.get_doc({
+                "doctype": "Asset",
+                "asset_name": a.get("name") or f"Bike {a.get('plate')}",
+                "item_code": a.get("code") or "Bike",
+                "key_arabia_plate_number": a.get("plate"),
+                "key_arabia_chassis_number": a.get("chassis"),
+                "key_arabia_engine_number": a.get("engine"),
+                "key_arabia_insurance_expiry": getdate(a.get("insuranceExpiry")) if a.get("insuranceExpiry") else None,
+                "key_arabia_registration_expiry": getdate(a.get("vehicleExpiry")) if a.get("vehicleExpiry") else None,
+                "key_arabia_salik_tag": a.get("salikTag"),
+                "key_arabia_custody_status": a.get("custody") or "In Company Stock",
+                "key_arabia_current_rider": a.get("currentRider"),
+                "key_arabia_asset_category": "Bike",
+                "key_arabia_asset_head": "Fleet / Vehicle"
+            })
+            doc.insert(ignore_permissions=True)
+            
+    frappe.db.commit()
+    return "Success"
+
+
+@frappe.whitelist()
+def save_movements(movements):
+    import json
+    if isinstance(movements, str):
+        movements = json.loads(movements)
+        
+    for m in movements:
+        exists = frappe.db.exists("Key Arabia Custody Movement", m.get("id"))
+        if not exists:
+            # Check if asset exists
+            asset_ref = m.get("assetId")
+            if not frappe.db.exists("Asset", asset_ref) and m.get("assetCode"):
+                # Try plate mapping
+                asset_ref = frappe.db.get_value("Asset", {"key_arabia_plate_number": m.get("assetCode").replace("DB-", "")}, "name")
+                
+            if asset_ref:
+                doc = frappe.get_doc({
+                    "doctype": "Key Arabia Custody Movement",
+                    "movement_type": m.get("type"),
+                    "asset": asset_ref,
+                    "from_holder": m.get("fromHolder"),
+                    "to_holder": m.get("toHolder")
+                })
+                doc.insert(ignore_permissions=True)
+            
+    frappe.db.commit()
+    return "Success"
+
+
+@frappe.whitelist()
+def save_riders(riders):
+    import json
+    if isinstance(riders, str):
+        riders = json.loads(riders)
+        
+    for r in riders:
+        exists = frappe.db.exists("Key Arabia Rider", r.get("id"))
+        if exists:
+            doc = frappe.get_doc("Key Arabia Rider", r.get("id"))
+            doc.rider_name = r.get("name")
+            doc.phone = r.get("phone")
+            doc.email = r.get("email")
+            doc.status = r.get("status") or "Active"
+            doc.emirates_id = r.get("emiratesId")
+            doc.save()
+        else:
+            doc = frappe.get_doc({
+                "doctype": "Key Arabia Rider",
+                "name": r.get("id"),
+                "rider_name": r.get("name"),
+                "phone": r.get("phone"),
+                "email": r.get("email"),
+                "status": r.get("status") or "Active",
+                "emirates_id": r.get("emiratesId")
+            })
+            doc.insert(ignore_permissions=True)
+            
+    frappe.db.commit()
+    return "Success"

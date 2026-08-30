@@ -2882,6 +2882,22 @@
     const loggedInUser = window.DEXAFLEET_CONTEXT?.user || { name:"Ghulam Murtaza", role:"Company Admin", company:"DexaFleet", scope:"Company" };
     let prototypeStateReady = false;
 
+    window.assets = assets;
+    window.riders = riders;
+    window.movements = movements;
+    window.assetEditRequests = assetEditRequests;
+    window.movementApprovalRequests = movementApprovalRequests;
+    window.financeChargeRequests = financeChargeRequests;
+    window.importBatches = importBatches;
+    window.audit = audit;
+    window.companyMasterLists = companyMasterLists;
+    window.companyAssetNameOptions = companyAssetNameOptions;
+    window.companyLocationOptions = companyLocationOptions;
+    window.assetHierarchy = assetHierarchy;
+    window.fieldTemplates = fieldTemplates;
+    window.documentRules = documentRules;
+    window.loggedInUser = loggedInUser;
+
     function nowDate() { return new Date(); }
     function isoDate(date = nowDate()) { return date.toLocaleDateString("en-CA", { timeZone:"Asia/Dubai" }); }
     function isoDateTime(date = nowDate()) {
@@ -2926,6 +2942,9 @@
     }
 
     function savePrototypeDataState() {
+      if (window.onPrototypeDataSave) {
+        window.onPrototypeDataSave();
+      }
       if (!prototypeStateReady) return;
       try {
         localStorage.setItem(prototypeDataStateKey, JSON.stringify({
@@ -2983,6 +3002,14 @@
     }
 
     function loadPrototypeDataState() {
+      if (window.onPrototypeDataLoad) {
+        window.onPrototypeDataLoad(replaceArray, restoreObject, () => {
+          prototypeStateReady = true;
+          renderSetup();
+          render();
+        });
+        return;
+      }
       try {
         localStorage.removeItem("dexafleet.assetInventory.prototypeData.v1");
         localStorage.removeItem("dexafleet.assetInventory.prototypeData.v2");
