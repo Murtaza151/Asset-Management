@@ -73,20 +73,38 @@ def load_prototype_data():
 
     movements_raw = frappe.get_all("Key Arabia Custody Movement", fields=[
         "name as id", "movement_type as type", "asset as assetId", 
-        "from_holder as fromHolder", "to_holder as toHolder", "creation"
+        "from_holder_type as fromHolderType", "from_rider as fromRider", "from_location as fromLocation",
+        "to_holder_type as toHolderType", "to_rider as toRider", "to_location as toLocation",
+        "creation"
     ], order_by="creation desc")
     
     movements = []
     for m in movements_raw:
         dt = m.creation
+        from_holder = ""
+        if m.fromRider:
+            from_holder = frappe.db.get_value("Key Arabia Rider", m.fromRider, "rider_name") or m.fromRider
+        elif m.fromLocation:
+            from_holder = m.fromLocation
+        else:
+            from_holder = m.fromHolderType or "Company"
+            
+        to_holder = ""
+        if m.toRider:
+            to_holder = frappe.db.get_value("Key Arabia Rider", m.toRider, "rider_name") or m.toRider
+        elif m.toLocation:
+            to_holder = m.toLocation
+        else:
+            to_holder = m.toHolderType or "Company"
+
         movements.append({
             "id": m.id,
             "type": m.type,
             "assetId": m.assetId,
             "assetCode": m.assetId,
             "assetName": frappe.db.get_value("Asset", m.assetId, "asset_name") or "",
-            "fromHolder": m.fromHolder,
-            "toHolder": m.toHolder,
+            "fromHolder": from_holder,
+            "toHolder": to_holder,
             "date": dt.strftime("%Y-%m-%d") if dt else "",
             "time": dt.strftime("%H:%M") if dt else "",
             "status": "Approved",
@@ -165,12 +183,45 @@ def save_movements(movements):
                 asset_ref = frappe.db.get_value("Asset", {"key_arabia_plate_number": m.get("assetCode").replace("DB-", "")}, "name")
                 
             if asset_ref:
+                from_holder = m.get("fromHolder")
+                to_holder = m.get("toHolder")
+                from_type = "Company"
+                from_rider = None
+                from_location = None
+                to_type = "Company"
+                to_rider = None
+                to_location = None
+                if from_holder:
+                    if frappe.db.exists("Key Arabia Rider", from_holder):
+                        from_rider = from_holder
+                        from_type = "Rider"
+                    elif frappe.db.exists("Location", from_holder):
+                        from_location = from_holder
+                        from_type = "Other"
+                    elif from_holder in ["Company", "Rider", "Workshop / Vendor", "Police / Authority", "Client", "Other"]:
+                        from_type = from_holder
+                if to_holder:
+                    if frappe.db.exists("Key Arabia Rider", to_holder):
+                        to_rider = to_holder
+                        to_type = "Rider"
+                    elif frappe.db.exists("Location", to_holder):
+                        to_location = to_holder
+                        to_type = "Other"
+                    elif to_holder in ["Company", "Rider", "Workshop / Vendor", "Police / Authority", "Client", "Other"]:
+                        to_type = to_holder
                 doc = frappe.get_doc({
                     "doctype": "Key Arabia Custody Movement",
-                    "movement_type": m.get("type"),
+                    "movement_type": m.get("type") or "Correction",
                     "asset": asset_ref,
-                    "from_holder": m.get("fromHolder"),
-                    "to_holder": m.get("toHolder")
+                    "occurred_at": frappe.utils.now_datetime(),
+                    "from_holder_type": from_type,
+                    "from_rider": from_rider,
+                    "from_location": from_location,
+                    "to_holder_type": to_type,
+                    "to_rider": to_rider,
+                    "to_location": to_location,
+                    "condition": "Good",
+                    "approval_status": "Approved"
                 })
                 doc.insert(ignore_permissions=True)
             
