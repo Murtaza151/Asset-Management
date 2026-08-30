@@ -1,0 +1,2 @@
+{"add_total_row":1,"columns":[],"disabled":0,"doctype":"Report","is_standard":"Yes","module":"DexaFleet Assets","name":"DexaFleet Finance Exceptions","prepared_report":0,"ref_doctype":"DexaFleet Fine","report_name":"DexaFleet Finance Exceptions","report_type":"Script Report","roles":[{"role":"DexaFleet Finance User"},{"role":"DexaFleet Finance Manager"},{"role":"DexaFleet Company Admin"}]}
+

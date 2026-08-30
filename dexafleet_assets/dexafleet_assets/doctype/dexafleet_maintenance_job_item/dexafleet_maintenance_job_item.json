@@ -1,0 +1,21 @@
+{
+ "actions": [],
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["maintenance_item", "item_name", "quantity", "unit_price", "line_total", "service_interval_km", "required_evidence"],
+ "fields": [
+  {"fieldname": "maintenance_item", "fieldtype": "Link", "in_list_view": 1, "label": "Maintenance Item", "options": "DexaFleet Maintenance Item", "reqd": 1},
+  {"fetch_from": "maintenance_item.item_name", "fieldname": "item_name", "fieldtype": "Data", "label": "Item Name", "read_only": 1},
+  {"default": "1", "fieldname": "quantity", "fieldtype": "Float", "in_list_view": 1, "label": "Quantity", "non_negative": 1, "reqd": 1},
+  {"fieldname": "unit_price", "fieldtype": "Currency", "in_list_view": 1, "label": "Locked Unit Price", "non_negative": 1, "read_only": 1, "reqd": 1},
+  {"fieldname": "line_total", "fieldtype": "Currency", "in_list_view": 1, "label": "Line Total", "read_only": 1},
+  {"fieldname": "service_interval_km", "fieldtype": "Int", "label": "Service Interval (KM)", "read_only": 1},
+  {"fieldname": "required_evidence", "fieldtype": "Small Text", "label": "Required Evidence", "read_only": 1}
+ ],
+ "istable": 1,
+ "module": "DexaFleet Assets",
+ "name": "DexaFleet Maintenance Job Item",
+ "permissions": []
+}
+

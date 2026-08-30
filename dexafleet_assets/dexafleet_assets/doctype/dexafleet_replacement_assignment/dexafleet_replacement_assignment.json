@@ -1,0 +1,29 @@
+{
+ "actions":[], "allow_import":1, "autoname":"naming_series:", "doctype":"DocType", "engine":"InnoDB",
+ "field_order":["naming_series","company","original_asset","replacement_asset","rider","reason","column_break_1","start_at","expected_return_at","actual_return_at","status","source_maintenance_job","handover_movement","return_movement","notes"],
+ "fields":[
+  {"default":"DRA-.YYYY.-.#####","fieldname":"naming_series","fieldtype":"Select","hidden":1,"label":"Series","options":"DRA-.YYYY.-.#####"},
+  {"fieldname":"company","fieldtype":"Link","in_list_view":1,"label":"Company","options":"Company","reqd":1},
+  {"fieldname":"original_asset","fieldtype":"Link","in_list_view":1,"label":"Original Asset","options":"Asset","reqd":1},
+  {"fieldname":"replacement_asset","fieldtype":"Link","in_list_view":1,"label":"Replacement Asset","options":"Asset","reqd":1},
+  {"fieldname":"rider","fieldtype":"Link","in_list_view":1,"label":"Rider","options":"DexaFleet Rider","reqd":1},
+  {"fieldname":"reason","fieldtype":"Select","label":"Reason","options":"Workshop\nAccident\nBreakdown\nPolice Case\nProvider Swap\nOther","reqd":1},
+  {"fieldname":"column_break_1","fieldtype":"Column Break"},
+  {"fieldname":"start_at","fieldtype":"Datetime","in_list_view":1,"label":"Start At","reqd":1},
+  {"fieldname":"expected_return_at","fieldtype":"Datetime","label":"Expected Return At"},
+  {"fieldname":"actual_return_at","fieldtype":"Datetime","label":"Actual Return At"},
+  {"default":"Active","fieldname":"status","fieldtype":"Select","in_list_view":1,"label":"Status","options":"Draft\nActive\nOverdue\nReturned\nCancelled","reqd":1},
+  {"fieldname":"source_maintenance_job","fieldtype":"Link","label":"Source Maintenance Job","options":"DexaFleet Maintenance Job"},
+  {"fieldname":"handover_movement","fieldtype":"Link","label":"Handover Movement","options":"DexaFleet Custody Movement"},
+  {"fieldname":"return_movement","fieldtype":"Link","label":"Return Movement","options":"DexaFleet Custody Movement"},
+  {"fieldname":"notes","fieldtype":"Small Text","label":"Notes"}
+ ],
+ "links":[], "module":"DexaFleet Assets", "name":"DexaFleet Replacement Assignment", "naming_rule":"By \"Naming Series\" field",
+ "permissions":[
+  {"create":1,"print":1,"read":1,"role":"DexaFleet Asset User","write":1},
+  {"create":1,"export":1,"print":1,"read":1,"report":1,"role":"DexaFleet Operations Manager","write":1},
+  {"create":1,"delete":1,"export":1,"print":1,"read":1,"report":1,"role":"DexaFleet Company Admin","share":1,"write":1}
+ ],
+ "search_fields":"original_asset,replacement_asset,rider", "sort_field":"start_at", "sort_order":"DESC", "title_field":"replacement_asset", "track_changes":1
+}
+

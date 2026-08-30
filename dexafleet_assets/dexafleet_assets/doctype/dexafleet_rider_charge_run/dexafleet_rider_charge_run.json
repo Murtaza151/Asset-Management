@@ -1,0 +1,30 @@
+{
+ "actions":[], "autoname":"naming_series:", "doctype":"DocType", "engine":"InnoDB",
+ "field_order":["naming_series","company","from_date","to_date","status","column_break_1","total_sources","total_riders","total_amount","sources","posting_section","posting_reference_type","posting_reference","approved_by","approved_at","notes"],
+ "fields":[
+  {"default":"DRC-.YYYY.-.#####","fieldname":"naming_series","fieldtype":"Select","hidden":1,"label":"Series","options":"DRC-.YYYY.-.#####"},
+  {"fieldname":"company","fieldtype":"Link","in_list_view":1,"label":"Company","options":"Company","reqd":1},
+  {"fieldname":"from_date","fieldtype":"Date","in_list_view":1,"label":"From Date","reqd":1},
+  {"fieldname":"to_date","fieldtype":"Date","in_list_view":1,"label":"To Date","reqd":1},
+  {"default":"Draft","fieldname":"status","fieldtype":"Select","in_list_view":1,"label":"Status","options":"Draft\nCalculated\nReviewed\nApproved\nPosted\nReversed","read_only":1,"reqd":1},
+  {"fieldname":"column_break_1","fieldtype":"Column Break"},
+  {"fieldname":"total_sources","fieldtype":"Int","label":"Sources","read_only":1},
+  {"fieldname":"total_riders","fieldtype":"Int","label":"Riders","read_only":1},
+  {"fieldname":"total_amount","fieldtype":"Currency","in_list_view":1,"label":"Total Amount","read_only":1},
+  {"fieldname":"sources","fieldtype":"Table","label":"Charge Sources","options":"DexaFleet Charge Source","read_only":1},
+  {"fieldname":"posting_section","fieldtype":"Section Break","label":"Approval and Posting"},
+  {"fieldname":"posting_reference_type","fieldtype":"Link","label":"Posting Reference Type","options":"DocType"},
+  {"fieldname":"posting_reference","fieldtype":"Dynamic Link","label":"Posting Reference","options":"posting_reference_type"},
+  {"fieldname":"approved_by","fieldtype":"Link","label":"Approved By","options":"User","read_only":1},
+  {"fieldname":"approved_at","fieldtype":"Datetime","label":"Approved At","read_only":1},
+  {"fieldname":"notes","fieldtype":"Small Text","label":"Notes"}
+ ],
+ "links":[], "module":"DexaFleet Assets", "name":"DexaFleet Rider Charge Run", "naming_rule":"By \"Naming Series\" field",
+ "permissions":[
+  {"create":1,"export":1,"print":1,"read":1,"report":1,"role":"DexaFleet Finance User","write":1},
+  {"create":1,"delete":1,"export":1,"print":1,"read":1,"report":1,"role":"DexaFleet Finance Manager","share":1,"write":1},
+  {"export":1,"print":1,"read":1,"report":1,"role":"DexaFleet Company Admin"}
+ ],
+ "search_fields":"company,posting_reference", "sort_field":"creation", "sort_order":"DESC", "title_field":"company", "track_changes":1
+}
+

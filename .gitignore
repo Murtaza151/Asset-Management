@@ -1,0 +1,11 @@
+*.py[cod]
+__pycache__/
+.DS_Store
+.idea/
+.vscode/
+.coverage
+coverage.xml
+dist/
+build/
+*.egg-info/
+node_modules/

@@ -1,0 +1,24 @@
+{
+ "content": null,
+ "doctype": "Page",
+ "icon": "fa fa-truck",
+ "module": "DexaFleet Assets",
+ "name": "dexafleet-assets-dashboard",
+ "page_name": "dexafleet-assets-dashboard",
+ "roles": [
+  {"role": "DexaFleet Asset User"},
+  {"role": "DexaFleet Asset Manager"},
+  {"role": "DexaFleet Operations Manager"},
+  {"role": "DexaFleet Workshop Manager"},
+  {"role": "DexaFleet Finance User"},
+  {"role": "DexaFleet Finance Manager"},
+  {"role": "DexaFleet Company Admin"},
+  {"role": "System Manager"}
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "DexaFleet Assets"
+}
+

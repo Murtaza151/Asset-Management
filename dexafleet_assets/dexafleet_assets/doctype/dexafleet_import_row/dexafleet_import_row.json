@@ -1,0 +1,15 @@
+{
+ "actions":[], "doctype":"DocType", "editable_grid":1, "engine":"InnoDB",
+ "field_order":["row_number","source_identifier","status","message","normalized_data","created_doctype","created_document"],
+ "fields":[
+  {"fieldname":"row_number","fieldtype":"Int","in_list_view":1,"label":"Row","read_only":1},
+  {"fieldname":"source_identifier","fieldtype":"Data","in_list_view":1,"label":"Source Identifier","read_only":1},
+  {"fieldname":"status","fieldtype":"Select","in_list_view":1,"label":"Status","options":"Ready\nWarning\nBlocked\nImported\nDuplicate\nFailed","read_only":1},
+  {"fieldname":"message","fieldtype":"Small Text","in_list_view":1,"label":"Message","read_only":1},
+  {"fieldname":"normalized_data","fieldtype":"JSON","label":"Normalized Data","read_only":1},
+  {"fieldname":"created_doctype","fieldtype":"Link","label":"Created DocType","options":"DocType","read_only":1},
+  {"fieldname":"created_document","fieldtype":"Dynamic Link","label":"Created Document","options":"created_doctype","read_only":1}
+ ],
+ "istable":1, "module":"DexaFleet Assets", "name":"DexaFleet Import Row", "permissions":[]
+}
+

@@ -1,0 +1,26 @@
+[project]
+name = "dexafleet_assets"
+authors = [
+    { name = "Aiopssense", email = "support@aiopssense.com" }
+]
+description = "Fleet asset, custody, maintenance, fine, Salik and rider charge management for ERPNext"
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "MIT" }
+dynamic = ["version"]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.bench.frappe-dependencies]
+frappe = ">=15.0.0,<16.0.0"
+erpnext = ">=15.0.0,<16.0.0"
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+

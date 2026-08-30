@@ -1,0 +1,30 @@
+{
+ "actions":[], "autoname":"naming_series:", "doctype":"DocType", "engine":"InnoDB",
+ "field_order":["naming_series","company","import_type","source_file","status","confirmation_section","warnings_confirmed","row_count","ready_count","warning_count","blocked_count","imported_count","failed_count","rows","error_log"],
+ "fields":[
+  {"default":"DIB-.YYYY.-.#####","fieldname":"naming_series","fieldtype":"Select","hidden":1,"label":"Series","options":"DIB-.YYYY.-.#####"},
+  {"fieldname":"company","fieldtype":"Link","in_list_view":1,"label":"Company","options":"Company","reqd":1},
+  {"fieldname":"import_type","fieldtype":"Select","in_list_view":1,"label":"Import Type","options":"Fine\nSalik\nRider\nAsset\nCustody Movement\nMaintenance","reqd":1},
+  {"fieldname":"source_file","fieldtype":"Attach","label":"CSV Source File","reqd":1},
+  {"default":"Uploaded","fieldname":"status","fieldtype":"Select","in_list_view":1,"label":"Status","options":"Uploaded\nValidating\nReady\nReady with Warnings\nBlocked\nCommitting\nCompleted\nFailed","read_only":1},
+  {"fieldname":"confirmation_section","fieldtype":"Section Break","label":"Validation Results"},
+  {"default":"0","fieldname":"warnings_confirmed","fieldtype":"Check","label":"Warnings Confirmed"},
+  {"default":"0","fieldname":"row_count","fieldtype":"Int","label":"Rows","read_only":1},
+  {"default":"0","fieldname":"ready_count","fieldtype":"Int","label":"Ready","read_only":1},
+  {"default":"0","fieldname":"warning_count","fieldtype":"Int","label":"Warnings","read_only":1},
+  {"default":"0","fieldname":"blocked_count","fieldtype":"Int","label":"Blocked","read_only":1},
+  {"default":"0","fieldname":"imported_count","fieldtype":"Int","label":"Imported","read_only":1},
+  {"default":"0","fieldname":"failed_count","fieldtype":"Int","label":"Failed","read_only":1},
+  {"fieldname":"rows","fieldtype":"Table","label":"Row Results","options":"DexaFleet Import Row","read_only":1},
+  {"fieldname":"error_log","fieldtype":"Long Text","label":"Error Log","read_only":1}
+ ],
+ "links":[], "module":"DexaFleet Assets", "name":"DexaFleet Import Batch", "naming_rule":"By \"Naming Series\" field",
+ "permissions":[
+  {"create":1,"export":1,"print":1,"read":1,"report":1,"role":"DexaFleet Finance User","write":1},
+  {"create":1,"delete":1,"export":1,"print":1,"read":1,"report":1,"role":"DexaFleet Finance Manager","share":1,"write":1},
+  {"create":1,"export":1,"print":1,"read":1,"report":1,"role":"DexaFleet Asset Manager","write":1},
+  {"create":1,"delete":1,"export":1,"print":1,"read":1,"report":1,"role":"DexaFleet Company Admin","share":1,"write":1}
+ ],
+ "search_fields":"import_type,source_file", "sort_field":"creation", "sort_order":"DESC", "title_field":"import_type", "track_changes":1
+}
+
