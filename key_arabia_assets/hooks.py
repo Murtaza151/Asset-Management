@@ -54,4 +54,5 @@ doc_events = {
 
 fixtures = [
     {"dt": "Role", "filters": [["name", "like", "Key Arabia%"]]},
+    {"dt": "Custom Field", "filters": [["fieldname", "like", "key_arabia_%"]]},
 ]
