@@ -27,7 +27,7 @@ Use a test site and a verified backup before installing on an existing ERPNext s
 ## Installation flow
 
 ```bash
-bench get-app https://github.com/Murtaza151/dexafleet-asset-management.git --branch v1.0.0
+bench get-app https://github.com/Murtaza151/Asset-Management.git --branch v1.0.0
 bench --site <site-name> install-app dexafleet_assets
 bench --site <site-name> migrate
 bench build --app dexafleet_assets
