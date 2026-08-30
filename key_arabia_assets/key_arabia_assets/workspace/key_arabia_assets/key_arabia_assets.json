@@ -1,0 +1,69 @@
+{
+ "app": "key_arabia_assets",
+ "content": "[{\"id\":\"key-arabia-assets-dashboard-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Key Arabia Asset Dashboard\",\"col\":3}},{\"id\":\"asset-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset\",\"col\":3}},{\"id\":\"key-arabia-rider-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Key Arabia Rider\",\"col\":3}},{\"id\":\"key-arabia-custody-movement-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Key Arabia Custody Movement\",\"col\":3}},{\"id\":\"key-arabia-maintenance-job-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Key Arabia Maintenance Job\",\"col\":3}},{\"id\":\"key-arabia-fine-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Key Arabia Fine\",\"col\":3}},{\"id\":\"key-arabia-salik-transaction-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Key Arabia Salik Transaction\",\"col\":3}}]",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "truck",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Key Arabia Assets",
+ "links": [],
+ "module": "Key Arabia Assets",
+ "name": "Key Arabia Assets",
+ "number_cards": [],
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [],
+ "sequence_id": 99,
+ "shortcuts": [
+  {
+   "doctype": "Workspace Shortcut",
+   "type": "Page",
+   "link_to": "key-arabia-assets-dashboard",
+   "label": "Key Arabia Asset Dashboard"
+  },
+  {
+   "doctype": "Workspace Shortcut",
+   "type": "DocType",
+   "link_to": "Asset",
+   "label": "Asset"
+  },
+  {
+   "doctype": "Workspace Shortcut",
+   "type": "DocType",
+   "link_to": "Key Arabia Rider",
+   "label": "Key Arabia Rider"
+  },
+  {
+   "doctype": "Workspace Shortcut",
+   "type": "DocType",
+   "link_to": "Key Arabia Custody Movement",
+   "label": "Key Arabia Custody Movement"
+  },
+  {
+   "doctype": "Workspace Shortcut",
+   "type": "DocType",
+   "link_to": "Key Arabia Maintenance Job",
+   "label": "Key Arabia Maintenance Job"
+  },
+  {
+   "doctype": "Workspace Shortcut",
+   "type": "DocType",
+   "link_to": "Key Arabia Fine",
+   "label": "Key Arabia Fine"
+  },
+  {
+   "doctype": "Workspace Shortcut",
+   "type": "DocType",
+   "link_to": "Key Arabia Salik Transaction",
+   "label": "Key Arabia Salik Transaction"
+  }
+ ],
+ "title": "Key Arabia Assets",
+ "type": "Workspace"
+}
